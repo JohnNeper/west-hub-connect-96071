@@ -21,6 +21,7 @@ const Footer = ({ lang }: FooterProps) => {
         home: "Accueil",
         about: "À propos",
         services: "Services",
+        team: "Équipe",
         blog: "Blog",
         booking: "Réservation",
         contact: "Contact"
@@ -39,6 +40,7 @@ const Footer = ({ lang }: FooterProps) => {
         home: "Home",
         about: "About",
         services: "Services",
+        team: "Team",
         blog: "Blog",
         booking: "Booking",
         contact: "Contact"
@@ -84,6 +86,11 @@ const Footer = ({ lang }: FooterProps) => {
               <li>
                 <Link to="/services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
                   {t.links.services}
+                </Link>
+              </li>
+              <li>
+                <Link to="/team" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
+                  {t.links.team}
                 </Link>
               </li>
               <li>

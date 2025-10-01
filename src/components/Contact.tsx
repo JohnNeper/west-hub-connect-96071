@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Users, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface ContactProps {
   lang: 'fr' | 'en';
@@ -34,7 +35,13 @@ const Contact = ({ lang }: ContactProps) => {
       location: "Localisation",
       locationText: "Bafoussam, Région de l'Ouest, Cameroun",
       contactEmail: "Email",
-      contactPhone: "Téléphone"
+      contactPhone: "Téléphone",
+      joinCommunity: "Rejoignez la Communauté",
+      joinCommunityDesc: "Faites partie de l'écosystème West Hub",
+      bookSpace: "Réservez un Espace",
+      bookSpaceDesc: "Trouvez l'espace parfait pour votre activité",
+      joinBtn: "Nous Rejoindre",
+      bookBtn: "Réserver Maintenant"
     },
     en: {
       title: "Contact Us",
@@ -50,7 +57,13 @@ const Contact = ({ lang }: ContactProps) => {
       location: "Location",
       locationText: "Bafoussam, West Region, Cameroon",
       contactEmail: "Email",
-      contactPhone: "Phone"
+      contactPhone: "Phone",
+      joinCommunity: "Join the Community",
+      joinCommunityDesc: "Be part of the West Hub ecosystem",
+      bookSpace: "Book a Space",
+      bookSpaceDesc: "Find the perfect space for your activity",
+      joinBtn: "Join Us",
+      bookBtn: "Book Now"
     }
   };
 
@@ -116,19 +129,63 @@ const Contact = ({ lang }: ContactProps) => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">{t.contactPhone}</h3>
-                  <a href="tel:+237" className="text-muted-foreground hover:text-primary transition-colors">
-                    +237 XXX XXX XXX
+                  <a href="tel:+237658315610" className="text-muted-foreground hover:text-primary transition-colors">
+                    +237 658 315 610
                   </a>
                 </div>
               </div>
             </Card>
 
-            {/* Google Maps Placeholder */}
+            {/* Google Maps */}
             <Card className="overflow-hidden shadow-card">
-              <div className="aspect-video bg-muted flex items-center justify-center">
-                <MapPin className="h-12 w-12 text-muted-foreground" />
-              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127172.08245845685!2d10.352485!3d5.478394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x105f31ea3a50b823%3A0x8e4faa8cd2c8b0e5!2sBafoussam%2C%20Cameroon!5e0!3m2!1sen!2s!4v1234567890"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full"
+              />
             </Card>
+
+            {/* CTA Cards */}
+            <div className="grid md:grid-cols-2 gap-4">
+              <Card className="p-6 shadow-card hover:shadow-glow transition-all duration-300 group">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Users className="h-6 w-6 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">{t.joinCommunity}</h3>
+                    <p className="text-sm text-muted-foreground">{t.joinCommunityDesc}</p>
+                  </div>
+                </div>
+                <Link to="/team">
+                  <Button className="w-full" variant="outline">
+                    {t.joinBtn}
+                  </Button>
+                </Link>
+              </Card>
+
+              <Card className="p-6 shadow-card hover:shadow-glow transition-all duration-300 group">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Calendar className="h-6 w-6 text-secondary-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">{t.bookSpace}</h3>
+                    <p className="text-sm text-muted-foreground">{t.bookSpaceDesc}</p>
+                  </div>
+                </div>
+                <a href="#booking">
+                  <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
+                    {t.bookBtn}
+                  </Button>
+                </a>
+              </Card>
+            </div>
           </div>
 
           <Card className="p-8 shadow-card animate-slide-up" style={{ animationDelay: '0.2s' }}>

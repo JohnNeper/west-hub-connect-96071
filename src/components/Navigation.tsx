@@ -19,6 +19,7 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
       home: "Accueil",
       about: "À propos",
       services: "Services",
+      team: "Équipe",
       blog: "Blog",
       book: "Réserver"
     },
@@ -26,6 +27,7 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
       home: "Home",
       about: "About",
       services: "Services",
+      team: "Team",
       blog: "Blog",
       book: "Book Now"
     }
@@ -41,6 +43,7 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
     { label: t.home, href: "/", isSection: false },
     { label: t.about, href: "/about", isSection: false },
     { label: t.services, href: "/services", isSection: false },
+    { label: t.team, href: "/team", isSection: false },
     { label: t.blog, href: "/blog", isSection: false },
   ];
 

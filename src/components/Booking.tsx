@@ -33,10 +33,10 @@ const Booking = ({ lang }: BookingProps) => {
       spaceType: "Type d'espace",
       selectSpace: "Sélectionnez un espace",
       spaces: {
-        office: "Bureau Privé",
-        coworking: "Espace Coworking",
-        meeting: "Salle de Réunion",
-        consulting: "Consultation Stratégie Digitale"
+        office: "Bureau Privé (à partir de 50 000 FCFA/mois)",
+        coworking: "Espace Coworking (15 000 FCFA/jour)",
+        meeting: "Salle de Réunion (25 000 FCFA/jour)",
+        consulting: "Consultation Stratégie Digitale (sur devis)"
       },
       date: "Date souhaitée",
       duration: "Durée",
@@ -66,10 +66,10 @@ const Booking = ({ lang }: BookingProps) => {
       spaceType: "Space Type",
       selectSpace: "Select a space",
       spaces: {
-        office: "Private Office",
-        coworking: "Coworking Space",
-        meeting: "Meeting Room",
-        consulting: "Digital Strategy Consultation"
+        office: "Private Office (from 50,000 FCFA/month)",
+        coworking: "Coworking Space (15,000 FCFA/day)",
+        meeting: "Meeting Room (25,000 FCFA/day)",
+        consulting: "Digital Strategy Consultation (quote based)"
       },
       date: "Desired Date",
       duration: "Duration",

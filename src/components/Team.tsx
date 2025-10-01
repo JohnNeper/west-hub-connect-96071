@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Linkedin, Twitter } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 interface TeamProps {
   lang: 'fr' | 'en';
@@ -29,22 +29,31 @@ const Team = ({ lang }: TeamProps) => {
 
   const t = content[lang];
 
-  // Placeholder team members
+  // Real team members
   const teamMembers = [
     {
-      name: lang === 'fr' ? 'Équipe Fondatrice' : 'Founding Team',
-      role: 'Leadership',
-      image: null
+      name: 'Therence Ngniguepa',
+      role: lang === 'fr' ? 'Fondateur & CEO' : 'Founder & CEO',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+      linkedin: 'https://cm.linkedin.com/in/therence-ngniguepa-648750222'
     },
     {
-      name: 'Mentors',
-      role: lang === 'fr' ? 'Conseil & Expertise' : 'Advisory & Expertise',
-      image: null
+      name: 'Orlane Motue Sandra',
+      role: lang === 'fr' ? 'Directrice des Opérations' : 'Operations Director',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop',
+      linkedin: '#'
     },
     {
-      name: 'Community',
-      role: lang === 'fr' ? 'Réseau West Tech' : 'West Tech Network',
-      image: null
+      name: 'Patrick Manfouo',
+      role: lang === 'fr' ? 'Directeur Technique' : 'Technical Director',
+      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop',
+      linkedin: '#'
+    },
+    {
+      name: 'Prof Fouotsa Emmanuel',
+      role: lang === 'fr' ? 'Advisor, Associate & Board Member' : 'Advisor, Associate & Board Member',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop',
+      linkedin: 'https://cm.linkedin.com/in/emmanuel-fouotsa-9b6820254'
     }
   ];
 
@@ -63,14 +72,15 @@ const Team = ({ lang }: TeamProps) => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16 animate-slide-up">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16 animate-slide-up">
           {teamMembers.map((member, index) => (
-            <Card key={index} className="overflow-hidden shadow-card hover:shadow-glow transition-all duration-300">
-              <div className="aspect-square bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <div className="text-center text-white">
-                  <div className="text-6xl font-bold mb-2">?</div>
-                  <p className="text-sm opacity-75">{lang === 'fr' ? 'Photo à venir' : 'Photo coming soon'}</p>
-                </div>
+            <Card key={index} className="overflow-hidden shadow-card hover:shadow-glow transition-all duration-300 group">
+              <div className="aspect-square overflow-hidden">
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
               </div>
               <div className="p-6 text-center">
                 <h3 className="text-xl font-bold text-foreground mb-2">
@@ -80,11 +90,13 @@ const Team = ({ lang }: TeamProps) => {
                   {member.role}
                 </p>
                 <div className="flex gap-3 justify-center">
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <a 
+                    href={member.linkedin} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     <Linkedin className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    <Twitter className="h-5 w-5" />
                   </a>
                 </div>
               </div>
