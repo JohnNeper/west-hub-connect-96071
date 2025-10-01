@@ -3,15 +3,57 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Calendar, User, ArrowLeft, Newspaper, Rocket, Trophy } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Calendar, User, ArrowLeft, Heart, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import westHubLaunch from "@/assets/blog-west-hub-launch.jpg";
+import digitalTransformation from "@/assets/blog-digital-transformation.jpg";
+import successStory from "@/assets/blog-success-story.jpg";
+import bootcamp from "@/assets/blog-bootcamp.jpg";
+import report2023 from "@/assets/blog-report-2023.jpg";
+import techTrends from "@/assets/blog-tech-trends.jpg";
 
 const BlogArticlePage = () => {
   const { id } = useParams();
   const [lang, setLang] = useState<'fr' | 'en'>('fr');
+  const [likes, setLikes] = useState(42);
+  const [isLiked, setIsLiked] = useState(false);
+  const [comments, setComments] = useState([
+    { id: 1, author: "Jean Dupont", text: "Excellent article ! Très inspirant.", date: "16 Mars 2024" },
+    { id: 2, author: "Marie Kamdem", text: "Merci pour ces informations précieuses.", date: "16 Mars 2024" }
+  ]);
+  const [newComment, setNewComment] = useState({ name: "", text: "" });
+  const { toast } = useToast();
 
   const toggleLang = () => {
     setLang(prev => prev === 'fr' ? 'en' : 'fr');
+  };
+
+  const handleLike = () => {
+    setIsLiked(!isLiked);
+    setLikes(isLiked ? likes - 1 : likes + 1);
+    toast({
+      description: isLiked ? (lang === 'fr' ? "Like retiré" : "Like removed") : (lang === 'fr' ? "Article aimé !" : "Article liked!"),
+    });
+  };
+
+  const handleCommentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newComment.name && newComment.text) {
+      const comment = {
+        id: comments.length + 1,
+        author: newComment.name,
+        text: newComment.text,
+        date: new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+      };
+      setComments([...comments, comment]);
+      setNewComment({ name: "", text: "" });
+      toast({
+        description: lang === 'fr' ? "Commentaire ajouté avec succès !" : "Comment added successfully!",
+      });
+    }
   };
 
   const articlesData = {
@@ -23,7 +65,7 @@ const BlogArticlePage = () => {
         category: "Annonce",
         date: "15 Mars 2024",
         author: "Équipe West Hub",
-        image: Newspaper,
+        image: westHubLaunch,
         content: `
           <h2>Un nouveau hub pour l'Ouest Cameroun</h2>
           <p>Nous sommes ravis d'annoncer l'ouverture officielle de West Hub Innovation à Bafoussam, marquant une étape importante dans le développement de l'écosystème technologique de la Région de l'Ouest.</p>
@@ -50,7 +92,7 @@ const BlogArticlePage = () => {
         category: "Stratégie",
         date: "10 Mars 2024",
         author: "Expert Digital",
-        image: Rocket,
+        image: digitalTransformation,
         content: `
           <h2>La transformation digitale : Un impératif pour les PME</h2>
           <p>Dans un monde de plus en plus connecté, la transformation digitale est devenue cruciale pour la survie et la croissance des entreprises.</p>
@@ -78,7 +120,7 @@ const BlogArticlePage = () => {
         category: "Success Story",
         date: "5 Mars 2024",
         author: "Community Manager",
-        image: Trophy,
+        image: successStory,
         content: `
           <h2>De l'idée à la levée de fonds</h2>
           <p>Découvrez comment une jeune startup camerounaise est passée d'une simple idée à une levée de fonds réussie de 100 000$ en seulement 18 mois.</p>
@@ -108,7 +150,7 @@ const BlogArticlePage = () => {
         category: "Événement",
         date: "1 Mars 2024",
         author: "Équipe Formation",
-        image: Rocket,
+        image: bootcamp,
         content: `
           <h2>Devenez Développeur Fullstack en 12 semaines</h2>
           <p>Notre bootcamp intensif vous permettra d'acquérir toutes les compétences nécessaires pour démarrer une carrière dans le développement web.</p>
@@ -138,7 +180,7 @@ const BlogArticlePage = () => {
         category: "Rapport",
         date: "25 Février 2024",
         author: "Direction",
-        image: Trophy,
+        image: report2023,
         content: `
           <h2>Une année 2023 exceptionnelle</h2>
           <p>L'année 2023 a marqué un tournant pour l'écosystème West Tech avec des résultats dépassant toutes nos attentes.</p>
@@ -169,7 +211,7 @@ const BlogArticlePage = () => {
         category: "Tendances",
         date: "20 Février 2024",
         author: "Analyste Tech",
-        image: Rocket,
+        image: techTrends,
         content: `
           <h2>L'Afrique à l'heure de la révolution technologique</h2>
           <p>Le continent africain connaît une transformation digitale sans précédent. Voici les 5 tendances à suivre de près en 2024.</p>
@@ -199,7 +241,7 @@ const BlogArticlePage = () => {
         category: "Announcement",
         date: "March 15, 2024",
         author: "West Hub Team",
-        image: Newspaper,
+        image: westHubLaunch,
         content: `
           <h2>A new hub for Western Cameroon</h2>
           <p>We are excited to announce the official opening of West Hub Innovation in Bafoussam, marking an important milestone in the development of the West Region's technology ecosystem.</p>
@@ -226,7 +268,7 @@ const BlogArticlePage = () => {
         category: "Strategy",
         date: "March 10, 2024",
         author: "Digital Expert",
-        image: Rocket,
+        image: digitalTransformation,
         content: `
           <h2>Digital Transformation: An Imperative for SMEs</h2>
           <p>In an increasingly connected world, digital transformation has become crucial for business survival and growth.</p>
@@ -254,7 +296,7 @@ const BlogArticlePage = () => {
         category: "Success Story",
         date: "March 5, 2024",
         author: "Community Manager",
-        image: Trophy,
+        image: successStory,
         content: `
           <h2>From Idea to Fundraising</h2>
           <p>Discover how a young Cameroonian startup went from a simple idea to a successful $100,000 fundraising in just 18 months.</p>
@@ -284,7 +326,7 @@ const BlogArticlePage = () => {
         category: "Event",
         date: "March 1, 2024",
         author: "Training Team",
-        image: Rocket,
+        image: bootcamp,
         content: `
           <h2>Become a Fullstack Developer in 12 weeks</h2>
           <p>Our intensive bootcamp will allow you to acquire all the skills needed to start a career in web development.</p>
@@ -314,7 +356,7 @@ const BlogArticlePage = () => {
         category: "Report",
         date: "February 25, 2024",
         author: "Management",
-        image: Trophy,
+        image: report2023,
         content: `
           <h2>An Exceptional 2023</h2>
           <p>The year 2023 marked a turning point for the West Tech ecosystem with results exceeding all our expectations.</p>
@@ -345,7 +387,7 @@ const BlogArticlePage = () => {
         category: "Trends",
         date: "February 20, 2024",
         author: "Tech Analyst",
-        image: Rocket,
+        image: techTrends,
         content: `
           <h2>Africa in the Era of Technological Revolution</h2>
           <p>The African continent is experiencing an unprecedented digital transformation. Here are the 5 trends to watch closely in 2024.</p>
@@ -376,8 +418,6 @@ const BlogArticlePage = () => {
     return <Navigate to="/blog" replace />;
   }
 
-  const Icon = article.image;
-
   return (
     <div className="min-h-screen">
       <Navigation lang={lang} toggleLang={toggleLang} />
@@ -391,30 +431,37 @@ const BlogArticlePage = () => {
             </Button>
           </Link>
 
-          <Card className="overflow-hidden shadow-glow">
-            <div className="bg-gradient-to-br from-primary to-secondary p-16 flex items-center justify-center">
-              <Icon className="h-32 w-32 text-white" />
-            </div>
-            
-            <div className="p-8 md:p-12">
-              <div className="flex items-center gap-4 mb-6">
-                <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+          <Card className="overflow-hidden shadow-glow mb-8">
+            {/* Hero Image */}
+            <div className="relative h-96 overflow-hidden">
+              <img 
+                src={article.image} 
+                alt={article.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full mb-4">
                   {article.category}
                 </span>
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  {article.date}
-                </div>
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <User className="h-4 w-4 mr-1" />
-                  {article.author}
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  {article.title}
+                </h1>
+                <div className="flex items-center gap-4 text-white/90">
+                  <div className="flex items-center text-sm">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    {article.date}
+                  </div>
+                  <div className="flex items-center text-sm">
+                    <User className="h-4 w-4 mr-1" />
+                    {article.author}
+                  </div>
                 </div>
               </div>
-
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                {article.title}
-              </h1>
-
+            </div>
+            
+            {/* Content */}
+            <div className="p-8 md:p-12">
               <div 
                 className="prose prose-lg max-w-none text-foreground
                   prose-headings:text-foreground prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4
@@ -425,7 +472,66 @@ const BlogArticlePage = () => {
                   prose-strong:text-foreground"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
+
+              {/* Like Button */}
+              <div className="mt-12 pt-8 border-t border-border">
+                <Button
+                  onClick={handleLike}
+                  variant={isLiked ? "default" : "outline"}
+                  size="lg"
+                  className="gap-2"
+                >
+                  <Heart className={`h-5 w-5 ${isLiked ? 'fill-current' : ''}`} />
+                  {likes} {lang === 'fr' ? 'J\'aime' : 'Likes'}
+                </Button>
+              </div>
             </div>
+          </Card>
+
+          {/* Comments Section */}
+          <Card className="p-8 md:p-12 shadow-card">
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+              <MessageCircle className="h-6 w-6" />
+              {lang === 'fr' ? 'Commentaires' : 'Comments'} ({comments.length})
+            </h2>
+
+            {/* Comment List */}
+            <div className="space-y-6 mb-8">
+              {comments.map((comment) => (
+                <div key={comment.id} className="border-l-2 border-primary pl-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <User className="h-4 w-4 text-muted-foreground" />
+                    <span className="font-semibold text-foreground">{comment.author}</span>
+                    <span className="text-xs text-muted-foreground">• {comment.date}</span>
+                  </div>
+                  <p className="text-muted-foreground">{comment.text}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Comment Form */}
+            <form onSubmit={handleCommentSubmit} className="space-y-4">
+              <h3 className="text-xl font-semibold text-foreground">
+                {lang === 'fr' ? 'Laisser un commentaire' : 'Leave a comment'}
+              </h3>
+              <Input
+                placeholder={lang === 'fr' ? 'Votre nom' : 'Your name'}
+                value={newComment.name}
+                onChange={(e) => setNewComment({ ...newComment, name: e.target.value })}
+                required
+              />
+              <Textarea
+                placeholder={lang === 'fr' ? 'Votre commentaire...' : 'Your comment...'}
+                value={newComment.text}
+                onChange={(e) => setNewComment({ ...newComment, text: e.target.value })}
+                rows={4}
+                required
+              />
+              <Button type="submit" className="gap-2">
+                <Send className="h-4 w-4" />
+                {lang === 'fr' ? 'Envoyer' : 'Send'}
+              </Button>
+            </form>
           </Card>
         </div>
       </article>

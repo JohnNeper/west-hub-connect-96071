@@ -4,7 +4,13 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, User, ArrowRight, Newspaper, Rocket, Trophy } from "lucide-react";
+import { Calendar, User, ArrowRight } from "lucide-react";
+import westHubLaunch from "@/assets/blog-west-hub-launch.jpg";
+import digitalTransformation from "@/assets/blog-digital-transformation.jpg";
+import successStory from "@/assets/blog-success-story.jpg";
+import bootcamp from "@/assets/blog-bootcamp.jpg";
+import report2023 from "@/assets/blog-report-2023.jpg";
+import techTrends from "@/assets/blog-tech-trends.jpg";
 
 const BlogPage = () => {
   const [lang, setLang] = useState<'fr' | 'en'>('fr');
@@ -28,7 +34,7 @@ const BlogPage = () => {
           category: "Annonce",
           date: "15 Mars 2024",
           author: "Équipe West Hub",
-          image: Newspaper,
+          image: westHubLaunch,
           featured: true
         },
         {
@@ -38,7 +44,7 @@ const BlogPage = () => {
           category: "Stratégie",
           date: "10 Mars 2024",
           author: "Expert Digital",
-          image: Rocket,
+          image: digitalTransformation,
           featured: false
         },
         {
@@ -48,7 +54,7 @@ const BlogPage = () => {
           category: "Success Story",
           date: "5 Mars 2024",
           author: "Community Manager",
-          image: Trophy,
+          image: successStory,
           featured: false
         },
         {
@@ -58,7 +64,7 @@ const BlogPage = () => {
           category: "Événement",
           date: "1 Mars 2024",
           author: "Équipe Formation",
-          image: Rocket,
+          image: bootcamp,
           featured: false
         },
         {
@@ -68,7 +74,7 @@ const BlogPage = () => {
           category: "Rapport",
           date: "25 Février 2024",
           author: "Direction",
-          image: Trophy,
+          image: report2023,
           featured: false
         },
         {
@@ -78,7 +84,7 @@ const BlogPage = () => {
           category: "Tendances",
           date: "20 Février 2024",
           author: "Analyste Tech",
-          image: Rocket,
+          image: techTrends,
           featured: false
         }
       ]
@@ -97,7 +103,7 @@ const BlogPage = () => {
           category: "Announcement",
           date: "March 15, 2024",
           author: "West Hub Team",
-          image: Newspaper,
+          image: westHubLaunch,
           featured: true
         },
         {
@@ -107,7 +113,7 @@ const BlogPage = () => {
           category: "Strategy",
           date: "March 10, 2024",
           author: "Digital Expert",
-          image: Rocket,
+          image: digitalTransformation,
           featured: false
         },
         {
@@ -117,7 +123,7 @@ const BlogPage = () => {
           category: "Success Story",
           date: "March 5, 2024",
           author: "Community Manager",
-          image: Trophy,
+          image: successStory,
           featured: false
         },
         {
@@ -127,7 +133,7 @@ const BlogPage = () => {
           category: "Event",
           date: "March 1, 2024",
           author: "Training Team",
-          image: Rocket,
+          image: bootcamp,
           featured: false
         },
         {
@@ -137,7 +143,7 @@ const BlogPage = () => {
           category: "Report",
           date: "February 25, 2024",
           author: "Management",
-          image: Trophy,
+          image: report2023,
           featured: false
         },
         {
@@ -147,7 +153,7 @@ const BlogPage = () => {
           category: "Trends",
           date: "February 20, 2024",
           author: "Tech Analyst",
-          image: Rocket,
+          image: techTrends,
           featured: false
         }
       ]
@@ -185,8 +191,12 @@ const BlogPage = () => {
             </h2>
             <Card className="overflow-hidden shadow-glow hover:shadow-xl transition-all duration-300 animate-slide-up">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="bg-gradient-to-br from-primary to-secondary p-12 flex items-center justify-center">
-                  <featuredArticle.image className="h-32 w-32 text-white" />
+                <div className="relative h-80 overflow-hidden">
+                  <img 
+                    src={featuredArticle.image} 
+                    alt={featuredArticle.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <div className="flex items-center gap-4 mb-4">
@@ -235,8 +245,12 @@ const BlogPage = () => {
                 className="overflow-hidden shadow-card hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up flex flex-col"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="bg-gradient-to-br from-secondary to-accent p-8 flex items-center justify-center">
-                  <article.image className="h-16 w-16 text-white" />
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={article.image} 
+                    alt={article.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
                   <div className="flex items-center gap-3 mb-3">
