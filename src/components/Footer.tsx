@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
 import logo from "@/assets/west-hub-logo.jpeg";
 
@@ -10,36 +11,36 @@ const Footer = ({ lang }: FooterProps) => {
     fr: {
       tagline: "Connecter, Innover, Impacter",
       quickLinks: "Liens Rapides",
-      services: "Services",
+      pages: "Pages",
       legal: "Mentions Légales",
       privacy: "Politique de Confidentialité",
       terms: "Conditions d'Utilisation",
       follow: "Suivez-nous",
       rights: "Tous droits réservés.",
       links: {
+        home: "Accueil",
         about: "À propos",
         services: "Services",
-        incubation: "Incubation",
-        partners: "Partenaires",
-        team: "Équipe",
+        blog: "Blog",
+        booking: "Réservation",
         contact: "Contact"
       }
     },
     en: {
       tagline: "Connect, Innovate, Impact",
       quickLinks: "Quick Links",
-      services: "Services",
+      pages: "Pages",
       legal: "Legal Notice",
       privacy: "Privacy Policy",
       terms: "Terms of Use",
       follow: "Follow Us",
       rights: "All rights reserved.",
       links: {
+        home: "Home",
         about: "About",
         services: "Services",
-        incubation: "Incubation",
-        partners: "Partners",
-        team: "Team",
+        blog: "Blog",
+        booking: "Booking",
         contact: "Contact"
       }
     }
@@ -68,18 +69,38 @@ const Footer = ({ lang }: FooterProps) => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-lg mb-4">{t.quickLinks}</h3>
+            <h3 className="font-bold text-lg mb-4">{t.pages}</h3>
             <ul className="space-y-2">
-              {Object.entries(t.links).map(([key, label]) => (
-                <li key={key}>
-                  <a 
-                    href={`#${key === 'about' ? 'about' : key}`}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
+                  {t.links.home}
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
+                  {t.links.about}
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
+                  {t.links.services}
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
+                  {t.links.blog}
+                </Link>
+              </li>
+              <li>
+                <a href="/#booking" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
+                  {t.links.booking}
+                </a>
+              </li>
+              <li>
+                <a href="/#contact" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
+                  {t.links.contact}
+                </a>
+              </li>
             </ul>
           </div>
 

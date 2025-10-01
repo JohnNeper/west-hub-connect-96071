@@ -57,7 +57,8 @@ const Hero = ({ lang }: HeroProps) => {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
           <Button 
-            size="lg" 
+            size="lg"
+            onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
             className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold px-8 py-6 text-lg shadow-glow"
           >
             {t.cta1} <ArrowRight className="ml-2 h-5 w-5" />
@@ -65,6 +66,7 @@ const Hero = ({ lang }: HeroProps) => {
           <Button 
             size="lg" 
             variant="outline"
+            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
             className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-6 text-lg"
           >
             {t.cta2}

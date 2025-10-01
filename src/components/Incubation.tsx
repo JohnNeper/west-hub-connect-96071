@@ -1,12 +1,30 @@
+import { useState } from "react";
 import { Rocket, TrendingUp, Users2, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 
 interface IncubationProps {
   lang: 'fr' | 'en';
 }
 
 const Incubation = ({ lang }: IncubationProps) => {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast.success(
+      lang === 'fr' 
+        ? "Inscription réussie! Nous vous contacterons bientôt." 
+        : "Registration successful! We'll contact you soon."
+    );
+    setEmail("");
+    setName("");
+  };
+
   const content = {
     fr: {
       badge: "Bientôt Disponible",
@@ -36,6 +54,10 @@ const Incubation = ({ lang }: IncubationProps) => {
         }
       ],
       cta: "Rejoindre la liste d'attente",
+      formTitle: "Inscrivez-vous pour être notifié",
+      name: "Nom complet",
+      email: "Email",
+      submit: "S'inscrire",
       west: "Écosystème West Tech",
       westDesc: "West Hub Innovation fait partie de l'écosystème West Tech, une initiative régionale qui rassemble entrepreneurs, développeurs, designers et investisseurs pour créer l'avenir technologique de la Région de l'Ouest."
     },
@@ -67,6 +89,10 @@ const Incubation = ({ lang }: IncubationProps) => {
         }
       ],
       cta: "Join the Waitlist",
+      formTitle: "Sign up to be notified",
+      name: "Full Name",
+      email: "Email",
+      submit: "Sign Up",
       west: "West Tech Ecosystem",
       westDesc: "West Hub Innovation is part of the West Tech ecosystem, a regional initiative bringing together entrepreneurs, developers, designers and investors to create the technological future of the West Region."
     }
@@ -114,14 +140,39 @@ const Incubation = ({ lang }: IncubationProps) => {
           ))}
         </div>
 
-        <div className="text-center mb-16 animate-slide-up">
-          <Button 
-            size="lg"
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-8 py-6 text-lg shadow-glow"
-          >
-            {t.cta}
-          </Button>
-        </div>
+        <Card className="max-w-2xl mx-auto p-8 shadow-card mb-16 animate-slide-up">
+          <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
+            {t.formTitle}
+          </h3>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="incubation-name">{t.name}</Label>
+              <Input
+                id="incubation-name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="incubation-email">{t.email}</Label>
+              <Input
+                id="incubation-email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <Button 
+              type="submit"
+              size="lg"
+              className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
+            >
+              {t.submit}
+            </Button>
+          </form>
+        </Card>
 
         <Card className="p-8 md:p-12 gradient-primary text-primary-foreground shadow-glow animate-fade-in">
           <div className="max-w-3xl mx-auto text-center">

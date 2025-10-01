@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Globe } from "lucide-react";
 import logo from "@/assets/west-hub-logo.jpeg";
@@ -10,37 +11,37 @@ interface NavigationProps {
 
 const Navigation = ({ lang, toggleLang }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   const content = {
     fr: {
+      home: "Accueil",
       about: "À propos",
       services: "Services",
-      incubation: "Incubation",
-      partners: "Partenaires",
-      team: "Équipe",
-      contact: "Contact",
+      blog: "Blog",
       book: "Réserver"
     },
     en: {
+      home: "Home",
       about: "About",
       services: "Services",
-      incubation: "Incubation",
-      partners: "Partners",
-      team: "Team",
-      contact: "Contact",
+      blog: "Blog",
       book: "Book Now"
     }
   };
 
   const t = content[lang];
 
-  const navItems = [
-    { label: t.about, href: "#about" },
-    { label: t.services, href: "#services" },
-    { label: t.incubation, href: "#incubation" },
-    { label: t.partners, href: "#partners" },
-    { label: t.team, href: "#team" },
-    { label: t.contact, href: "#contact" },
+  const navItems = isHome ? [
+    { label: t.about, href: "#about", isSection: true },
+    { label: t.services, href: "#services", isSection: true },
+    { label: t.book, href: "#booking", isSection: true },
+  ] : [
+    { label: t.home, href: "/", isSection: false },
+    { label: t.about, href: "/about", isSection: false },
+    { label: t.services, href: "/services", isSection: false },
+    { label: t.blog, href: "/blog", isSection: false },
   ];
 
   return (
@@ -48,20 +49,30 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img src={logo} alt="West Hub" className="h-12 w-auto" />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors font-medium"
-              >
-                {item.label}
-              </a>
+              item.isSection ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-foreground hover:text-primary transition-colors font-medium"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="text-foreground hover:text-primary transition-colors font-medium"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
           </div>
 
@@ -76,12 +87,15 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
               <Globe className="h-4 w-4" />
               {lang === 'fr' ? 'EN' : 'FR'}
             </Button>
-            <Button 
-              size="sm"
-              className="hidden sm:inline-flex bg-accent text-accent-foreground hover:bg-accent/90"
-            >
-              {t.book}
-            </Button>
+            {isHome && (
+              <Button 
+                size="sm"
+                onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+                className="hidden sm:inline-flex bg-accent text-accent-foreground hover:bg-accent/90"
+              >
+                {t.book}
+              </Button>
+            )}
             
             {/* Mobile Menu Button */}
             <button
@@ -97,14 +111,25 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
         {isOpen && (
           <div className="lg:hidden py-4 space-y-4 animate-fade-in">
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="block text-foreground hover:text-primary transition-colors font-medium py-2"
-              >
-                {item.label}
-              </a>
+              item.isSection ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-foreground hover:text-primary transition-colors font-medium py-2"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-foreground hover:text-primary transition-colors font-medium py-2"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
             <div className="pt-4 border-t border-border space-y-3">
               <Button
@@ -116,12 +141,18 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
                 <Globe className="h-4 w-4 mr-2" />
                 {lang === 'fr' ? 'English' : 'Français'}
               </Button>
-              <Button 
-                size="sm"
-                className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-              >
-                {t.book}
-              </Button>
+              {isHome && (
+                <Button 
+                  size="sm"
+                  onClick={() => {
+                    setIsOpen(false);
+                    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                >
+                  {t.book}
+                </Button>
+              )}
             </div>
           </div>
         )}

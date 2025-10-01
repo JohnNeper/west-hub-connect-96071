@@ -3,6 +3,8 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Services from "@/components/Services";
+import Stats from "@/components/Stats";
+import Testimonials from "@/components/Testimonials";
 import Incubation from "@/components/Incubation";
 import Booking from "@/components/Booking";
 import Partners from "@/components/Partners";
@@ -22,7 +24,9 @@ const Index = () => {
       <Navigation lang={lang} toggleLang={toggleLang} />
       <Hero lang={lang} />
       <About lang={lang} />
+      <Stats lang={lang} />
       <Services lang={lang} />
+      <Testimonials lang={lang} />
       <Incubation lang={lang} />
       <Booking lang={lang} />
       <Partners lang={lang} />
