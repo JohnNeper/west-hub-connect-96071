@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { Rocket, TrendingUp, Users2, Award } from "lucide-react";
+import { Lightbulb, Users, Rocket, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
 interface IncubationProps {
@@ -11,8 +9,18 @@ interface IncubationProps {
 }
 
 const Incubation = ({ lang }: IncubationProps) => {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    startup: ""
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,169 +29,135 @@ const Incubation = ({ lang }: IncubationProps) => {
         ? "Inscription réussie! Nous vous contacterons bientôt." 
         : "Registration successful! We'll contact you soon."
     );
-    setEmail("");
-    setName("");
+    setFormData({ name: "", email: "", startup: "" });
   };
 
   const content = {
     fr: {
-      badge: "Bientôt Disponible",
-      title: "Programme d'Incubation Startup",
-      subtitle: "Transformez votre idée en entreprise prospère",
-      description: "West Hub Innovation lance bientôt son programme d'incubation dédié aux startups technologiques. Un accompagnement complet pour accélérer votre croissance et maximiser vos chances de succès.",
+      title: "Programme d'Incubation",
+      subtitle: "Transformez votre idée en startup à succès",
       features: [
-        {
-          icon: Rocket,
-          title: "Accompagnement Personnalisé",
-          description: "Coaching individuel et mentorat par des experts de l'industrie"
-        },
-        {
-          icon: TrendingUp,
-          title: "Stratégie de Croissance",
-          description: "Plan d'action structuré pour développer votre business model"
-        },
-        {
-          icon: Users2,
-          title: "Réseau & Communauté",
-          description: "Accès à un réseau d'entrepreneurs, investisseurs et partenaires"
-        },
-        {
-          icon: Award,
-          title: "Ressources & Financement",
-          description: "Support pour lever des fonds et accéder aux opportunités"
-        }
+        "Mentorat Expert",
+        "Réseau & Networking",
+        "Accès au Financement"
       ],
-      cta: "Rejoindre la liste d'attente",
-      formTitle: "Inscrivez-vous pour être notifié",
-      name: "Nom complet",
-      email: "Email",
-      submit: "S'inscrire",
-      west: "Écosystème West Tech",
-      westDesc: "West Hub Innovation fait partie de l'écosystème West Tech, une initiative régionale qui rassemble entrepreneurs, développeurs, designers et investisseurs pour créer l'avenir technologique de la Région de l'Ouest."
+      formTitle: "Rejoignez la liste d'attente",
+      formButton: "S'inscrire maintenant"
     },
     en: {
-      badge: "Coming Soon",
-      title: "Startup Incubation Program",
-      subtitle: "Transform your idea into a thriving business",
-      description: "West Hub Innovation is launching soon its incubation program dedicated to tech startups. Complete support to accelerate your growth and maximize your chances of success.",
+      title: "Incubation Program",
+      subtitle: "Transform your idea into a successful startup",
       features: [
-        {
-          icon: Rocket,
-          title: "Personalized Support",
-          description: "Individual coaching and mentoring by industry experts"
-        },
-        {
-          icon: TrendingUp,
-          title: "Growth Strategy",
-          description: "Structured action plan to develop your business model"
-        },
-        {
-          icon: Users2,
-          title: "Network & Community",
-          description: "Access to a network of entrepreneurs, investors and partners"
-        },
-        {
-          icon: Award,
-          title: "Resources & Funding",
-          description: "Support to raise funds and access opportunities"
-        }
+        "Expert Mentorship",
+        "Network & Networking",
+        "Access to Funding"
       ],
-      cta: "Join the Waitlist",
-      formTitle: "Sign up to be notified",
-      name: "Full Name",
-      email: "Email",
-      submit: "Sign Up",
-      west: "West Tech Ecosystem",
-      westDesc: "West Hub Innovation is part of the West Tech ecosystem, a regional initiative bringing together entrepreneurs, developers, designers and investors to create the technological future of the West Region."
+      formTitle: "Join the Waitlist",
+      formButton: "Sign Up Now"
     }
   };
 
   const t = content[lang];
 
   return (
-    <section id="incubation" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
-          <span className="inline-block px-4 py-2 bg-secondary text-secondary-foreground rounded-full text-sm font-semibold mb-4">
-            {t.badge}
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            {t.title}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
-            {t.subtitle}
-          </p>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            {t.description}
-          </p>
-        </div>
+    <section className="py-32 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary">
+        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, hsl(var(--accent)) 0%, transparent 50%), radial-gradient(circle at 80% 80%, hsl(var(--primary)) 0%, transparent 50%)' }}></div>
+      </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {t.features.map((feature, index) => (
-            <Card 
-              key={index}
-              className="p-6 shadow-card hover:shadow-glow transition-all duration-300 animate-slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="mb-4">
-                <div className="w-14 h-14 gradient-secondary rounded-xl flex items-center justify-center">
-                  <feature.icon className="h-7 w-7 text-secondary-foreground" />
-                </div>
-              </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {feature.description}
-              </p>
-            </Card>
-          ))}
-        </div>
-
-        <Card className="max-w-2xl mx-auto p-8 shadow-card mb-16 animate-slide-up">
-          <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
-            {t.formTitle}
-          </h3>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="incubation-name">{t.name}</Label>
-              <Input
-                id="incubation-name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="incubation-email">{t.email}</Label>
-              <Input
-                id="incubation-email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <Button 
-              type="submit"
-              size="lg"
-              className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
-            >
-              {t.submit}
-            </Button>
-          </form>
-        </Card>
-
-        <Card className="p-8 md:p-12 gradient-primary text-primary-foreground shadow-glow animate-fade-in">
-          <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-3xl font-bold mb-4">
-              {t.west}
-            </h3>
-            <p className="text-lg leading-relaxed opacity-90">
-              {t.westDesc}
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <span className="inline-block px-6 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full font-semibold text-sm mb-6">
+              {lang === 'fr' ? 'BIENTÔT DISPONIBLE' : 'COMING SOON'}
+            </span>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">
+              {t.title}
+            </h2>
+            <p className="text-xl md:text-2xl mb-8 text-white/95 max-w-3xl mx-auto leading-relaxed">
+              {t.subtitle}
             </p>
           </div>
-        </Card>
+          
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 group">
+              <div className="bg-white/20 rounded-2xl p-5 w-fit mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Lightbulb className="h-10 w-10 text-white" />
+              </div>
+              <h3 className="font-bold text-xl mb-3 text-white">{t.features[0]}</h3>
+              <p className="text-white/80 text-sm">
+                {lang === 'fr' ? 'Accompagnement personnalisé pour transformer votre idée en startup' : 'Personalized support to transform your idea into a startup'}
+              </p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 group">
+              <div className="bg-white/20 rounded-2xl p-5 w-fit mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Users className="h-10 w-10 text-white" />
+              </div>
+              <h3 className="font-bold text-xl mb-3 text-white">{t.features[1]}</h3>
+              <p className="text-white/80 text-sm">
+                {lang === 'fr' ? 'Connectez avec des mentors, investisseurs et entrepreneurs' : 'Connect with mentors, investors and entrepreneurs'}
+              </p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 group">
+              <div className="bg-white/20 rounded-2xl p-5 w-fit mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Rocket className="h-10 w-10 text-white" />
+              </div>
+              <h3 className="font-bold text-xl mb-3 text-white">{t.features[2]}</h3>
+              <p className="text-white/80 text-sm">
+                {lang === 'fr' ? 'Accédez à des opportunités de financement pour votre startup' : 'Access funding opportunities for your startup'}
+              </p>
+            </div>
+          </div>
+
+          {/* Sign Up Form */}
+          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-10 md:p-12 border border-white/20 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-bold mb-3 text-white text-center">{t.formTitle}</h3>
+            <p className="text-white/80 text-center mb-8">
+              {lang === 'fr' ? 'Soyez parmi les premiers à rejoindre notre programme' : 'Be among the first to join our program'}
+            </p>
+            
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <Input
+                type="text"
+                name="name"
+                placeholder={lang === 'fr' ? "Votre nom complet" : "Your full name"}
+                value={formData.name}
+                onChange={handleChange}
+                className="bg-white/20 border-white/30 text-white placeholder:text-white/70 h-14 rounded-2xl backdrop-blur-sm focus:bg-white/30 transition-all"
+                required
+              />
+              <Input
+                type="email"
+                name="email"
+                placeholder={lang === 'fr' ? "Votre email" : "Your email"}
+                value={formData.email}
+                onChange={handleChange}
+                className="bg-white/20 border-white/30 text-white placeholder:text-white/70 h-14 rounded-2xl backdrop-blur-sm focus:bg-white/30 transition-all"
+                required
+              />
+              <Input
+                type="text"
+                name="startup"
+                placeholder={lang === 'fr' ? "Nom de votre startup (optionnel)" : "Your startup name (optional)"}
+                value={formData.startup}
+                onChange={handleChange}
+                className="bg-white/20 border-white/30 text-white placeholder:text-white/70 h-14 rounded-2xl backdrop-blur-sm focus:bg-white/30 transition-all"
+              />
+              <Button 
+                type="submit"
+                className="w-full bg-accent text-accent-foreground hover:bg-accent/90 hover:scale-105 h-14 text-lg font-semibold rounded-2xl shadow-glow transition-all duration-300"
+                size="lg"
+              >
+                {t.formButton} <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,9 @@
-import { Target, Eye, Heart } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import heroImage from "@/assets/hero-coworking.jpg";
+import privateOffice from "@/assets/private-office.jpg";
+import meetingRoom from "@/assets/meeting-room.jpg";
+import cafeSpace from "@/assets/cafe-space.jpg";
 
 interface AboutProps {
   lang: 'fr' | 'en';
@@ -8,91 +12,103 @@ interface AboutProps {
 const About = ({ lang }: AboutProps) => {
   const content = {
     fr: {
-      title: "À Propos de West Hub Innovation",
-      subtitle: "Construire l'écosystème tech de demain",
-      description: "West Hub Innovation est né d'une vision audacieuse : créer un écosystème technologique dynamique dans la Région de l'Ouest du Cameroun. Situé à Bafoussam, notre hub est le catalyseur de l'innovation, de l'entrepreneuriat et de la collaboration.",
-      mission: "Notre Mission",
-      missionText: "Construire un écosystème technologique local et régional qui stimule l'innovation, l'entrepreneuriat et la collaboration pour transformer la Région de l'Ouest et l'Afrique Centrale.",
-      vision: "Notre Vision",
-      visionText: "Devenir le hub technologique de référence en Afrique Centrale, où les idées deviennent réalité et où les startups trouvent les ressources pour croître et impacter.",
-      values: "Nos Valeurs",
-      valuesText: "Innovation continue, collaboration authentique, excellence professionnelle, et impact social positif guident chacune de nos actions."
+      title: "Construisons l'Écosystème Tech de Demain",
+      mission: "West Hub Innovation est né d'une vision audacieuse : créer un écosystème technologique dynamique dans la Région de l'Ouest du Cameroun. Situé à Bafoussam, notre hub est le catalyseur de l'innovation, de l'entrepreneuriat et de la collaboration.",
+      vision: "Nous sommes bien plus qu'un simple espace de coworking. West Hub est un lieu où les bootcamps, meetups, tech talks et podcasts donnent vie à une communauté tech vibrante. Nous organisons régulièrement des événements pour stimuler l'innovation, favoriser les échanges et booster l'écosystème entrepreneurial de la région.",
+      cta: "En savoir plus"
     },
     en: {
-      title: "About West Hub Innovation",
-      subtitle: "Building tomorrow's tech ecosystem",
-      description: "West Hub Innovation was born from a bold vision: to create a dynamic tech ecosystem in Cameroon's West Region. Located in Bafoussam, our hub is the catalyst for innovation, entrepreneurship and collaboration.",
-      mission: "Our Mission",
-      missionText: "Build a local and regional tech ecosystem that drives innovation, entrepreneurship and collaboration to transform the West Region and Central Africa.",
-      vision: "Our Vision",
-      visionText: "Become the reference tech hub in Central Africa, where ideas become reality and startups find the resources to grow and make an impact.",
-      values: "Our Values",
-      valuesText: "Continuous innovation, authentic collaboration, professional excellence, and positive social impact guide all our actions."
+      title: "Building Tomorrow's Tech Ecosystem",
+      mission: "West Hub Innovation was born from a bold vision: to create a dynamic tech ecosystem in Cameroon's West Region. Located in Bafoussam, our hub is the catalyst for innovation, entrepreneurship and collaboration.",
+      vision: "We are much more than a simple coworking space. West Hub is a place where bootcamps, meetups, tech talks and podcasts bring a vibrant tech community to life. We regularly organize events to stimulate innovation, encourage exchanges and boost the region's entrepreneurial ecosystem.",
+      cta: "Learn more"
     }
   };
 
   const t = content[lang];
 
   return (
-    <section id="about" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            {t.title}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {t.subtitle}
-          </p>
-        </div>
+    <section id="about" className="py-32 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+      </div>
 
-        <div className="max-w-4xl mx-auto mb-16 animate-slide-up">
-          <p className="text-lg text-muted-foreground leading-relaxed text-center">
-            {t.description}
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 animate-slide-up">
-          <Card className="p-8 shadow-card hover:shadow-glow transition-all duration-300">
-            <div className="mb-6">
-              <div className="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mb-4">
-                <Target className="h-8 w-8 text-primary-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground mb-3">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8 animate-fade-in">
+            <span className="inline-block px-6 py-2 bg-primary/10 text-primary rounded-full font-semibold text-sm">
+              {lang === 'fr' ? 'À PROPOS' : 'ABOUT US'}
+            </span>
+            
+            <h2 className="text-5xl md:text-6xl font-bold gradient-text leading-tight">
+              {t.title}
+            </h2>
+            
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p className="text-xl">
                 {t.mission}
-              </h3>
-            </div>
-            <p className="text-muted-foreground leading-relaxed">
-              {t.missionText}
-            </p>
-          </Card>
-
-          <Card className="p-8 shadow-card hover:shadow-glow transition-all duration-300">
-            <div className="mb-6">
-              <div className="w-16 h-16 gradient-secondary rounded-2xl flex items-center justify-center mb-4">
-                <Eye className="h-8 w-8 text-secondary-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground mb-3">
+              </p>
+              <p>
                 {t.vision}
-              </h3>
+              </p>
             </div>
-            <p className="text-muted-foreground leading-relaxed">
-              {t.visionText}
-            </p>
-          </Card>
 
-          <Card className="p-8 shadow-card hover:shadow-glow transition-all duration-300">
-            <div className="mb-6">
-              <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-4">
-                <Heart className="h-8 w-8 text-accent-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground mb-3">
-                {t.values}
-              </h3>
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Button 
+                size="lg"
+                className="bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 shadow-glow rounded-full px-8"
+                onClick={() => window.location.href = '/about'}
+              >
+                {t.cta} <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
             </div>
-            <p className="text-muted-foreground leading-relaxed">
-              {t.valuesText}
-            </p>
-          </Card>
+          </div>
+          
+          <div className="relative animate-scale-in">
+            {/* Main Image */}
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-2xl"></div>
+              <div className="relative grid grid-cols-2 gap-6">
+                <div className="space-y-6">
+                  <div className="relative group overflow-hidden rounded-2xl shadow-xl">
+                    <img 
+                      src={privateOffice} 
+                      alt="Private Office" 
+                      className="w-full h-56 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <div className="relative group overflow-hidden rounded-2xl shadow-xl">
+                    <img 
+                      src={cafeSpace} 
+                      alt="Cafe Space" 
+                      className="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                </div>
+                <div className="space-y-6 pt-12">
+                  <div className="relative group overflow-hidden rounded-2xl shadow-xl">
+                    <img 
+                      src={meetingRoom} 
+                      alt="Meeting Room" 
+                      className="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <div className="relative group overflow-hidden rounded-2xl shadow-xl">
+                    <img 
+                      src={heroImage} 
+                      alt="Coworking Space" 
+                      className="w-full h-56 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

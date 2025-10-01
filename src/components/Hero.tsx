@@ -32,34 +32,40 @@ const Hero = ({ lang }: HeroProps) => {
         <img 
           src={heroImage} 
           alt="West Hub Coworking Space" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-105 animate-[scale_20s_ease-in-out_infinite_alternate]"
         />
-        <div className="absolute inset-0 gradient-hero opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-secondary/90"></div>
+      </div>
+
+      {/* Decorative Elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute top-20 right-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 py-20 text-center animate-fade-in">
-        <div className="flex justify-center mb-8">
+      <div className="relative z-10 container mx-auto px-6 py-32 text-center">
+        <div className="flex justify-center mb-12 animate-fade-in">
           <img 
             src={logo} 
             alt="West Hub Innovation Logo" 
-            className="h-24 md:h-32 w-auto"
+            className="h-20 md:h-28 w-auto drop-shadow-2xl"
           />
         </div>
         
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-slide-up">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 animate-slide-up leading-tight">
           {t.title}
         </h1>
         
-        <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12 animate-slide-up">
+        <p className="text-xl md:text-2xl text-white/95 max-w-4xl mx-auto mb-16 animate-slide-up leading-relaxed font-light">
           {t.subtitle}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up mb-20">
           <Button 
             size="lg"
             onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold px-8 py-6 text-lg shadow-glow"
+            className="bg-accent text-accent-foreground hover:bg-accent/90 hover:scale-105 font-semibold px-10 py-7 text-lg shadow-glow transition-all duration-300 rounded-full"
           >
             {t.cta1} <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
@@ -67,17 +73,32 @@ const Hero = ({ lang }: HeroProps) => {
             size="lg" 
             variant="outline"
             onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-            className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-6 text-lg"
+            className="border-2 border-white/80 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-primary hover:scale-105 font-semibold px-10 py-7 text-lg transition-all duration-300 rounded-full"
           >
             {t.cta2}
           </Button>
+        </div>
+
+        {/* Stats Preview */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto animate-fade-in">
+          {[
+            { number: "500+", label: lang === 'fr' ? "Membres" : "Members" },
+            { number: "50+", label: lang === 'fr' ? "Startups" : "Startups" },
+            { number: "100+", label: lang === 'fr' ? "Événements/an" : "Events/year" },
+            { number: "10+", label: lang === 'fr' ? "Partenaires" : "Partners" }
+          ].map((stat, index) => (
+            <div key={index} className="text-white/90 backdrop-blur-sm bg-white/5 rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">{stat.number}</div>
+              <div className="text-sm md:text-base font-medium">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
+        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center backdrop-blur-sm">
+          <div className="w-1 h-3 bg-white/80 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

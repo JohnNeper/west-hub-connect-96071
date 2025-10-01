@@ -1,9 +1,5 @@
-import { Lightbulb, Building2, Users, Video, Coffee } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Lightbulb, Building2, Users, Video, Coffee, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import privateOffice from "@/assets/private-office.jpg";
-import meetingRoom from "@/assets/meeting-room.jpg";
-import cafeSpace from "@/assets/cafe-space.jpg";
 
 interface ServicesProps {
   lang: 'fr' | 'en';
@@ -13,74 +9,64 @@ const Services = ({ lang }: ServicesProps) => {
   const content = {
     fr: {
       title: "Nos Services",
-      subtitle: "Des solutions adaptées à vos besoins",
+      subtitle: "Des solutions adaptées pour transformer votre vision en réalité",
       services: [
         {
           icon: Lightbulb,
           title: "Conseil & Stratégie Digitale",
-          description: "Accompagnement stratégique pour entreprises et particuliers dans leur transformation digitale. Analyse, conseil et mise en œuvre de solutions innovantes.",
-          image: null
+          description: "Accompagnement stratégique pour entreprises et particuliers dans leur transformation digitale. Analyse, conseil et mise en œuvre de solutions innovantes."
         },
         {
           icon: Building2,
           title: "Bureaux Privés",
-          description: "Espaces de travail privés et équipés, parfaits pour les équipes et entreprises recherchant un environnement professionnel dédié.",
-          image: privateOffice
+          description: "Espaces de travail privés et équipés, parfaits pour les équipes et entreprises recherchant un environnement professionnel dédié."
         },
         {
           icon: Users,
           title: "Espace Coworking",
-          description: "Rejoignez une communauté dynamique de professionnels et freelances dans un environnement collaboratif et inspirant.",
-          image: null
+          description: "Rejoignez une communauté dynamique de professionnels et freelances dans un environnement collaboratif et inspirant."
         },
         {
           icon: Video,
           title: "Salle de Réunion",
-          description: "Salles de réunion modernes et équipées (écrans, visioconférence) pour vos présentations, formations et réunions d'équipe.",
-          image: meetingRoom
+          description: "Salles de réunion modernes et équipées (écrans, visioconférence) pour vos présentations, formations et réunions d'équipe."
         },
         {
           icon: Coffee,
           title: "Café & Networking",
-          description: "Espace détente et networking pour échanger, collaborer et créer des synergies autour d'un café.",
-          image: cafeSpace
+          description: "Espace détente et networking pour échanger, collaborer et créer des synergies autour d'un café."
         }
       ],
       cta: "Réserver maintenant"
     },
     en: {
       title: "Our Services",
-      subtitle: "Solutions tailored to your needs",
+      subtitle: "Tailored solutions to transform your vision into reality",
       services: [
         {
           icon: Lightbulb,
           title: "Consulting & Digital Strategy",
-          description: "Strategic support for companies and individuals in their digital transformation. Analysis, consulting and implementation of innovative solutions.",
-          image: null
+          description: "Strategic support for companies and individuals in their digital transformation. Analysis, consulting and implementation of innovative solutions."
         },
         {
           icon: Building2,
           title: "Private Offices",
-          description: "Private and equipped workspaces, perfect for teams and companies seeking a dedicated professional environment.",
-          image: privateOffice
+          description: "Private and equipped workspaces, perfect for teams and companies seeking a dedicated professional environment."
         },
         {
           icon: Users,
           title: "Coworking Space",
-          description: "Join a dynamic community of professionals and freelancers in a collaborative and inspiring environment.",
-          image: null
+          description: "Join a dynamic community of professionals and freelancers in a collaborative and inspiring environment."
         },
         {
           icon: Video,
           title: "Meeting Room",
-          description: "Modern and equipped meeting rooms (screens, video conferencing) for your presentations, training and team meetings.",
-          image: meetingRoom
+          description: "Modern and equipped meeting rooms (screens, video conferencing) for your presentations, training and team meetings."
         },
         {
           icon: Coffee,
           title: "Café & Networking",
-          description: "Relaxation and networking space to exchange, collaborate and create synergies over coffee.",
-          image: cafeSpace
+          description: "Relaxation and networking space to exchange, collaborate and create synergies over coffee."
         }
       ],
       cta: "Book Now"
@@ -90,54 +76,55 @@ const Services = ({ lang }: ServicesProps) => {
   const t = content[lang];
 
   return (
-    <section id="services" className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+    <section id="services" className="py-32 bg-background relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-20 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <span className="inline-block px-6 py-2 bg-primary/10 text-primary rounded-full font-semibold text-sm mb-6">
+            {lang === 'fr' ? 'NOS SERVICES' : 'OUR SERVICES'}
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text">
             {t.title}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {t.subtitle}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {t.services.map((service, index) => (
-            <Card 
+            <div
               key={index}
-              className="overflow-hidden shadow-card hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group relative bg-card hover:bg-card/80 rounded-3xl p-10 shadow-card hover:shadow-glow transition-all duration-500 border border-border hover:border-primary/50 overflow-hidden"
             >
-              {service.image && (
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                  />
+              {/* Gradient Overlay on Hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative z-10">
+                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-5 rounded-2xl w-fit mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <service.icon className="h-10 w-10 text-primary" />
                 </div>
-              )}
-              <div className="p-6">
-                <div className="mb-4">
-                  <div className={`w-12 h-12 ${service.image ? 'gradient-primary' : 'gradient-secondary'} rounded-xl flex items-center justify-center`}>
-                    <service.icon className="h-6 w-6 text-white" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">
+                
+                <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                
+                <p className="text-muted-foreground mb-8 leading-relaxed text-base">
                   {service.description}
                 </p>
+                
                 <Button 
                   variant="outline" 
-                  size="sm"
-                  className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 rounded-full"
+                  onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  {t.cta}
+                  {t.cta} <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
