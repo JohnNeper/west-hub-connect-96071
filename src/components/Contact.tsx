@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Users, Calendar } from "lucide-react";
-import { Link } from "react-router-dom";
+import JoinCommunityDialog from "./JoinCommunityDialog";
 
 interface ContactProps {
   lang: 'fr' | 'en';
@@ -162,11 +162,11 @@ const Contact = ({ lang }: ContactProps) => {
                     <p className="text-sm text-muted-foreground">{t.joinCommunityDesc}</p>
                   </div>
                 </div>
-                <Link to="/team">
+                <JoinCommunityDialog lang={lang}>
                   <Button className="w-full" variant="outline">
                     {t.joinBtn}
                   </Button>
-                </Link>
+                </JoinCommunityDialog>
               </Card>
 
               <Card className="p-6 shadow-card hover:shadow-glow transition-all duration-300 group">

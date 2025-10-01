@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import logo from "@/assets/west-hub-logo.jpeg";
 import heroImage from "@/assets/hero-coworking.jpg";
+import JoinCommunityDialog from "./JoinCommunityDialog";
 
 interface HeroProps {
   lang: 'fr' | 'en';
@@ -13,13 +14,13 @@ const Hero = ({ lang }: HeroProps) => {
       title: "Connecter, Innover, Impacter",
       subtitle: "West Hub Innovation est votre écosystème technologique à Bafoussam, stimulant l'innovation, l'entrepreneuriat et la collaboration pour transformer la Région de l'Ouest et l'Afrique Centrale.",
       cta1: "Réservez votre espace",
-      cta2: "Découvrez nos services"
+      cta2: "Rejoindre la communauté"
     },
     en: {
       title: "Connect, Innovate, Impact",
       subtitle: "West Hub Innovation is your tech ecosystem in Bafoussam, driving innovation, entrepreneurship and collaboration to transform the West Region and Central Africa.",
       cta1: "Book Your Space",
-      cta2: "Discover Our Services"
+      cta2: "Join the Community"
     }
   };
 
@@ -69,14 +70,15 @@ const Hero = ({ lang }: HeroProps) => {
           >
             {t.cta1} <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-          <Button 
-            size="lg" 
-            variant="outline"
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-            className="border-2 border-white/80 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-primary hover:scale-105 font-semibold px-10 py-7 text-lg transition-all duration-300 rounded-full"
-          >
-            {t.cta2}
-          </Button>
+          <JoinCommunityDialog lang={lang} triggerText={t.cta2}>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="border-2 border-white/80 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-primary hover:scale-105 font-semibold px-10 py-7 text-lg transition-all duration-300 rounded-full"
+            >
+              {t.cta2}
+            </Button>
+          </JoinCommunityDialog>
         </div>
 
         {/* Stats Preview */}

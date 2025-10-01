@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -21,6 +22,7 @@ const BlogPage = () => {
       readMore: "Lire la suite",
       articles: [
         {
+          id: "lancement-west-hub",
           title: "Lancement de West Hub Innovation : Un nouveau souffle pour l'écosystème tech",
           excerpt: "West Hub Innovation ouvre ses portes à Bafoussam avec l'ambition de devenir le hub technologique de référence en Afrique Centrale. Découvrez notre vision et nos services.",
           category: "Annonce",
@@ -30,6 +32,7 @@ const BlogPage = () => {
           featured: true
         },
         {
+          id: "transformation-digitale",
           title: "Comment réussir sa transformation digitale : Guide pratique pour PME",
           excerpt: "La transformation digitale n'est plus une option mais une nécessité. Découvrez les étapes clés pour digitaliser votre entreprise avec succès.",
           category: "Stratégie",
@@ -39,6 +42,7 @@ const BlogPage = () => {
           featured: false
         },
         {
+          id: "success-story-100k",
           title: "Success Story : Startup camerounaise lève 100K$ grâce à West Tech",
           excerpt: "Retour sur le parcours inspirant d'une startup accompagnée par l'écosystème West Tech qui a réussi sa première levée de fonds.",
           category: "Success Story",
@@ -48,6 +52,7 @@ const BlogPage = () => {
           featured: false
         },
         {
+          id: "bootcamp-web-dev",
           title: "Bootcamp Web Development : Les inscriptions sont ouvertes",
           excerpt: "Rejoignez notre prochain bootcamp intensif de 12 semaines pour maîtriser React, Node.js et devenir développeur fullstack.",
           category: "Événement",
@@ -57,6 +62,7 @@ const BlogPage = () => {
           featured: false
         },
         {
+          id: "bilan-2023",
           title: "L'écosystème West Tech en chiffres : Bilan 2023",
           excerpt: "Découvrez les accomplissements de la communauté West Tech en 2023 : événements, startups lancées, emplois créés et plus encore.",
           category: "Rapport",
@@ -66,6 +72,7 @@ const BlogPage = () => {
           featured: false
         },
         {
+          id: "tendances-2024",
           title: "5 tendances tech à surveiller en 2024 en Afrique",
           excerpt: "Intelligence artificielle, fintech, agritech... Découvrez les secteurs qui vont transformer le continent africain cette année.",
           category: "Tendances",
@@ -84,6 +91,7 @@ const BlogPage = () => {
       readMore: "Read more",
       articles: [
         {
+          id: "lancement-west-hub",
           title: "West Hub Innovation Launch: A new breath for the tech ecosystem",
           excerpt: "West Hub Innovation opens its doors in Bafoussam with the ambition to become the reference tech hub in Central Africa. Discover our vision and services.",
           category: "Announcement",
@@ -93,6 +101,7 @@ const BlogPage = () => {
           featured: true
         },
         {
+          id: "transformation-digitale",
           title: "How to succeed in digital transformation: Practical guide for SMEs",
           excerpt: "Digital transformation is no longer an option but a necessity. Discover the key steps to successfully digitize your business.",
           category: "Strategy",
@@ -102,6 +111,7 @@ const BlogPage = () => {
           featured: false
         },
         {
+          id: "success-story-100k",
           title: "Success Story: Cameroonian startup raises 100K$ thanks to West Tech",
           excerpt: "Review of the inspiring journey of a startup supported by the West Tech ecosystem that succeeded in its first fundraising.",
           category: "Success Story",
@@ -111,6 +121,7 @@ const BlogPage = () => {
           featured: false
         },
         {
+          id: "bootcamp-web-dev",
           title: "Web Development Bootcamp: Applications are open",
           excerpt: "Join our next intensive 12-week bootcamp to master React, Node.js and become a fullstack developer.",
           category: "Event",
@@ -120,6 +131,7 @@ const BlogPage = () => {
           featured: false
         },
         {
+          id: "bilan-2023",
           title: "West Tech ecosystem in numbers: 2023 Report",
           excerpt: "Discover the achievements of the West Tech community in 2023: events, startups launched, jobs created and more.",
           category: "Report",
@@ -129,6 +141,7 @@ const BlogPage = () => {
           featured: false
         },
         {
+          id: "tendances-2024",
           title: "5 tech trends to watch in 2024 in Africa",
           excerpt: "Artificial intelligence, fintech, agritech... Discover the sectors that will transform the African continent this year.",
           category: "Trends",
@@ -196,9 +209,11 @@ const BlogPage = () => {
                       <User className="h-4 w-4 mr-1" />
                       {featuredArticle.author}
                     </div>
-                    <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-                      {t.readMore} <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    <Link to={`/blog/${featuredArticle.id}`}>
+                      <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                        {t.readMore} <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -244,9 +259,11 @@ const BlogPage = () => {
                       <User className="h-3 w-3 mr-1" />
                       {article.author}
                     </div>
-                    <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
-                      {t.readMore} <ArrowRight className="ml-1 h-3 w-3" />
-                    </Button>
+                    <Link to={`/blog/${article.id}`}>
+                      <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
+                        {t.readMore} <ArrowRight className="ml-1 h-3 w-3" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </Card>
