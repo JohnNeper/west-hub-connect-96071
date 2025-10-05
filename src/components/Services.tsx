@@ -13,74 +13,74 @@ interface ServicesProps {
 const Services = ({ lang }: ServicesProps) => {
   const content = {
     fr: {
-      title: "Nos Services",
-      subtitle: "Des solutions adaptées pour transformer votre vision en réalité",
+      title: "Nos Services & Infrastructures",
+      subtitle: "Un écosystème complet pour accélérer votre croissance et innovation",
       services: [
         {
-          icon: Lightbulb,
-          title: "Conseil & Stratégie Digitale",
-          description: "Accompagnement stratégique pour entreprises et particuliers dans leur transformation digitale. Analyse, conseil et mise en œuvre de solutions innovantes.",
-          image: null
-        },
-        {
-          icon: Building2,
-          title: "Bureaux Privés",
-          description: "Espaces de travail privés et équipés, parfaits pour les équipes et entreprises recherchant un environnement professionnel dédié.",
-          image: privateOfficeImg
-        },
-        {
           icon: Users,
-          title: "Espace Coworking",
-          description: "Rejoignez une communauté dynamique de professionnels et freelances dans un environnement collaboratif et inspirant.",
+          title: "West Innovation Space (Coworking)",
+          description: "Espace de coworking moderne ouvert 24/7 avec WiFi haut débit et électricité permanente. Rejoignez une communauté d'innovateurs, développeurs et entrepreneurs dans un environnement collaboratif stimulant.",
           image: coworkingImg
         },
         {
+          icon: Building2,
+          title: "Bureaux Privés Équipés",
+          description: "Bureaux privés modernes et entièrement équipés pour équipes et entreprises. WiFi ultra-rapide, électricité 24/7, mobilier ergonomique. L'environnement idéal pour votre croissance.",
+          image: privateOfficeImg
+        },
+        {
           icon: Video,
-          title: "Salle de Réunion",
-          description: "Salles de réunion modernes et équipées (écrans, visioconférence) pour vos présentations, formations et réunions d'équipe.",
+          title: "Salles de Réunion Ultra-Modernes",
+          description: "Salles de réunion high-tech avec écrans interactifs, systèmes de visioconférence professionnels, et équipements audiovisuels de pointe. Parfait pour présentations, formations et réunions stratégiques.",
           image: meetingRoomImg
         },
         {
+          icon: Lightbulb,
+          title: "Accompagnement Digitalisation & Business",
+          description: "Confiez-nous votre stratégie de transformation digitale. Notre équipe d'experts accompagne entreprises et porteurs de projets dans leur développement : conseil stratégique, digitalisation, développement business.",
+          image: null
+        },
+        {
           icon: Coffee,
-          title: "Café & Networking",
-          description: "Espace détente et networking pour échanger, collaborer et créer des synergies autour d'un café.",
+          title: "Programmes & Événements Tech",
+          description: "Hackathons, bootcamps, workshops et programmes de podcasts pour mettre en lumière les innovateurs. Sensibilisation, éducation et networking pour booster l'écosystème tech de la région Ouest.",
           image: cafeSpaceImg
         }
       ],
       cta: "Réserver maintenant"
     },
     en: {
-      title: "Our Services",
-      subtitle: "Tailored solutions to transform your vision into reality",
+      title: "Our Services & Infrastructure",
+      subtitle: "A complete ecosystem to accelerate your growth and innovation",
       services: [
         {
-          icon: Lightbulb,
-          title: "Consulting & Digital Strategy",
-          description: "Strategic support for companies and individuals in their digital transformation. Analysis, consulting and implementation of innovative solutions.",
-          image: null
-        },
-        {
-          icon: Building2,
-          title: "Private Offices",
-          description: "Private and equipped workspaces, perfect for teams and companies seeking a dedicated professional environment.",
-          image: privateOfficeImg
-        },
-        {
           icon: Users,
-          title: "Coworking Space",
-          description: "Join a dynamic community of professionals and freelancers in a collaborative and inspiring environment.",
+          title: "West Innovation Space (Coworking)",
+          description: "Modern 24/7 coworking space with high-speed WiFi and permanent electricity. Join a community of innovators, developers and entrepreneurs in a stimulating collaborative environment.",
           image: coworkingImg
         },
         {
+          icon: Building2,
+          title: "Equipped Private Offices",
+          description: "Modern and fully equipped private offices for teams and companies. Ultra-fast WiFi, 24/7 electricity, ergonomic furniture. The ideal environment for your growth.",
+          image: privateOfficeImg
+        },
+        {
           icon: Video,
-          title: "Meeting Room",
-          description: "Modern and equipped meeting rooms (screens, video conferencing) for your presentations, training and team meetings.",
+          title: "Ultra-Modern Meeting Rooms",
+          description: "High-tech meeting rooms with interactive screens, professional video conferencing systems, and state-of-the-art audiovisual equipment. Perfect for presentations, training and strategic meetings.",
           image: meetingRoomImg
         },
         {
+          icon: Lightbulb,
+          title: "Digitalization & Business Support",
+          description: "Entrust us with your digital transformation strategy. Our team of experts supports companies and project leaders in their development: strategic consulting, digitalization, business development.",
+          image: null
+        },
+        {
           icon: Coffee,
-          title: "Café & Networking",
-          description: "Relaxation and networking space to exchange, collaborate and create synergies over coffee.",
+          title: "Tech Programs & Events",
+          description: "Hackathons, bootcamps, workshops and podcast programs to highlight innovators. Awareness, education and networking to boost the West Region's tech ecosystem.",
           image: cafeSpaceImg
         }
       ],
