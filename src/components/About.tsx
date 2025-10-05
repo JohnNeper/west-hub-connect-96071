@@ -12,15 +12,15 @@ interface AboutProps {
 const About = ({ lang }: AboutProps) => {
   const content = {
     fr: {
-      title: "Construisons l'Écosystème Tech de Demain",
-      mission: "West Hub Innovation est né d'une vision audacieuse : créer un écosystème technologique dynamique dans la Région de l'Ouest du Cameroun. Situé à Bafoussam, notre hub est le catalyseur de l'innovation, de l'entrepreneuriat et de la collaboration.",
-      vision: "Nous sommes bien plus qu'un simple espace de coworking. West Hub est un lieu où les bootcamps, meetups, tech talks et podcasts donnent vie à une communauté tech vibrante. Nous organisons régulièrement des événements pour stimuler l'innovation, favoriser les échanges et booster l'écosystème entrepreneurial de la région.",
+      title: "Un écosystème complet pour l'innovation",
+      mission: "West Innovation Hub est l'infrastructure physique dédiée à l'accélération de l'écosystème tech de l'Ouest Cameroun. Situé à Bafoussam, nous offrons un environnement professionnel moderne avec WiFi Starlink et électricité garantis 24/7.",
+      vision: "Nous proposons le West Innovation Space (coworking), des bureaux privés équipés, des salles de réunion ultra-modernes, et des programmes (podcasts, hackathons, bootcamps). Nous accompagnons aussi les PME dans leur digitalisation et stratégie business.",
       cta: "En savoir plus"
     },
     en: {
-      title: "Building Tomorrow's Tech Ecosystem",
-      mission: "West Hub Innovation was born from a bold vision: to create a dynamic tech ecosystem in Cameroon's West Region. Located in Bafoussam, our hub is the catalyst for innovation, entrepreneurship and collaboration.",
-      vision: "We are much more than a simple coworking space. West Hub is a place where bootcamps, meetups, tech talks and podcasts bring a vibrant tech community to life. We regularly organize events to stimulate innovation, encourage exchanges and boost the region's entrepreneurial ecosystem.",
+      title: "A Complete Innovation Ecosystem",
+      mission: "West Innovation Hub is the physical infrastructure dedicated to accelerating the West Cameroon tech ecosystem. Located in Bafoussam, we offer a modern professional environment with Starlink WiFi and guaranteed 24/7 electricity.",
+      vision: "We offer West Innovation Space (coworking), equipped private offices, ultra-modern meeting rooms, and programs (podcasts, hackathons, bootcamps). We also support SMEs in their digitalization and business strategy.",
       cta: "Learn more"
     }
   };

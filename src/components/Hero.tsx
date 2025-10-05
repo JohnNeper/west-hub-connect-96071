@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import logo from "@/assets/west-hub-logo.jpeg";
+import { ArrowRight, Wifi, Zap, Calendar, Lightbulb } from "lucide-react";
+import logo from "@/assets/west-innovation-hub-logo.png";
 import heroImage from "@/assets/hero-coworking.jpg";
 import JoinCommunityDialog from "./JoinCommunityDialog";
 
@@ -11,16 +11,30 @@ interface HeroProps {
 const Hero = ({ lang }: HeroProps) => {
   const content = {
     fr: {
-      title: "Connecter, Innover, Impacter",
-      subtitle: "West Hub Innovation est votre écosystème technologique à Bafoussam, stimulant l'innovation, l'entrepreneuriat et la collaboration pour transformer la Région de l'Ouest et l'Afrique Centrale.",
-      cta1: "Réservez votre espace",
-      cta2: "Rejoindre la communauté"
+      title: "West Innovation Hub",
+      subtitle: "West Innovation Space à Bafoussam",
+      description: "Espace de coworking 24/7, bureaux privés et salle de conférence ultra-moderne. Programmes, podcasts, bootcamps et services de digitalisation pour accélérer les startups et entreprises de l'Ouest.",
+      cta1: "Réserver un poste",
+      cta2: "Demander un devis digitalisation",
+      benefits: [
+        { icon: Wifi, label: "WiFi 24/7 Starlink" },
+        { icon: Zap, label: "Électricité permanente" },
+        { icon: Calendar, label: "Programmes & Événements" },
+        { icon: Lightbulb, label: "Conseil Digitalisation" }
+      ]
     },
     en: {
-      title: "Connect, Innovate, Impact",
-      subtitle: "West Hub Innovation is your tech ecosystem in Bafoussam, driving innovation, entrepreneurship and collaboration to transform the West Region and Central Africa.",
+      title: "West Innovation Hub",
+      subtitle: "West Innovation Space in Bafoussam",
+      description: "24/7 coworking space, private offices and ultra-modern conference room. Programs, podcasts, bootcamps and digitalization services to accelerate startups and businesses in the West.",
       cta1: "Book Your Space",
-      cta2: "Join the Community"
+      cta2: "Request Digitalization Quote",
+      benefits: [
+        { icon: Wifi, label: "24/7 WiFi Starlink" },
+        { icon: Zap, label: "Permanent Electricity" },
+        { icon: Calendar, label: "Programs & Events" },
+        { icon: Lightbulb, label: "Digitalization Consulting" }
+      ]
     }
   };
 
@@ -32,16 +46,16 @@ const Hero = ({ lang }: HeroProps) => {
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage} 
-          alt="West Hub Coworking Space" 
+          alt="West Innovation Hub Coworking Space Bafoussam" 
           className="w-full h-full object-cover scale-105 animate-[scale_20s_ease-in-out_infinite_alternate]"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-secondary/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/90"></div>
       </div>
 
       {/* Decorative Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-20 right-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       {/* Content */}
@@ -49,49 +63,47 @@ const Hero = ({ lang }: HeroProps) => {
         <div className="flex justify-center mb-12 animate-fade-in">
           <img 
             src={logo} 
-            alt="West Hub Innovation Logo" 
-            className="h-20 md:h-28 w-auto drop-shadow-2xl"
+            alt="West Innovation Hub Logo" 
+            className="h-24 md:h-32 w-auto drop-shadow-2xl"
           />
         </div>
         
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 animate-slide-up leading-tight">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 animate-slide-up leading-tight">
           {t.title}
         </h1>
         
-        <p className="text-xl md:text-2xl text-white/95 max-w-4xl mx-auto mb-16 animate-slide-up leading-relaxed font-light">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-accent mb-8 animate-slide-up">
           {t.subtitle}
+        </h2>
+        
+        <p className="text-xl md:text-2xl text-white/95 max-w-4xl mx-auto mb-16 animate-slide-up leading-relaxed font-light">
+          {t.description}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up mb-20">
           <Button 
             size="lg"
             onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-accent text-accent-foreground hover:bg-accent/90 hover:scale-105 font-semibold px-10 py-7 text-lg shadow-glow transition-all duration-300 rounded-full"
+            className="bg-accent text-white hover:bg-accent/90 hover:scale-105 font-semibold px-10 py-7 text-lg shadow-glow transition-all duration-300 rounded-full"
           >
             {t.cta1} <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-          <JoinCommunityDialog lang={lang} triggerText={t.cta2}>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-2 border-white/80 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-primary hover:scale-105 font-semibold px-10 py-7 text-lg transition-all duration-300 rounded-full"
-            >
-              {t.cta2}
-            </Button>
-          </JoinCommunityDialog>
+          <Button 
+            size="lg" 
+            variant="outline"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="border-2 border-white/80 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-primary hover:scale-105 font-semibold px-10 py-7 text-lg transition-all duration-300 rounded-full"
+          >
+            {t.cta2}
+          </Button>
         </div>
 
-        {/* Stats Preview */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto animate-fade-in">
-          {[
-            { number: "500+", label: lang === 'fr' ? "Membres" : "Members" },
-            { number: "50+", label: lang === 'fr' ? "Startups" : "Startups" },
-            { number: "100+", label: lang === 'fr' ? "Événements/an" : "Events/year" },
-            { number: "10+", label: lang === 'fr' ? "Partenaires" : "Partners" }
-          ].map((stat, index) => (
-            <div key={index} className="text-white/90 backdrop-blur-sm bg-white/5 rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
-              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">{stat.number}</div>
-              <div className="text-sm md:text-base font-medium">{stat.label}</div>
+        {/* Benefits Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto animate-fade-in">
+          {t.benefits.map((benefit, index) => (
+            <div key={index} className="text-white/90 backdrop-blur-sm bg-white/5 rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+              <benefit.icon className="h-8 w-8 text-accent mb-3 mx-auto group-hover:scale-110 transition-transform" />
+              <div className="text-sm md:text-base font-medium">{benefit.label}</div>
             </div>
           ))}
         </div>

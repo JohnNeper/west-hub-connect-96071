@@ -17,34 +17,39 @@ const Services = ({ lang }: ServicesProps) => {
       subtitle: "Des solutions adaptées pour transformer votre vision en réalité",
       services: [
         {
-          icon: Lightbulb,
-          title: "Conseil & Stratégie Digitale",
-          description: "Accompagnement stratégique pour entreprises et particuliers dans leur transformation digitale. Analyse, conseil et mise en œuvre de solutions innovantes.",
-          image: null
+          icon: Users,
+          title: "West Innovation Space (Coworking)",
+          description: "Espace de coworking 24/7 avec WiFi Starlink haut débit, électricité permanente. Rejoignez une communauté dynamique d'innovateurs et entrepreneurs.",
+          image: coworkingImg,
+          features: ["Accès 24/7", "WiFi Starlink", "Café gratuit", "Communauté"]
         },
         {
           icon: Building2,
-          title: "Bureaux Privés",
-          description: "Espaces de travail privés et équipés, parfaits pour les équipes et entreprises recherchant un environnement professionnel dédié.",
-          image: privateOfficeImg
-        },
-        {
-          icon: Users,
-          title: "Espace Coworking",
-          description: "Rejoignez une communauté dynamique de professionnels et freelances dans un environnement collaboratif et inspirant.",
-          image: coworkingImg
+          title: "Bureaux Privés Équipés",
+          description: "Bureaux privés entièrement équipés pour équipes et entreprises. Contrats flexibles mensuels, environnement professionnel premium.",
+          image: privateOfficeImg,
+          features: ["Bureaux meublés", "Contrats flexibles", "Services admin", "Sécurité 24/7"]
         },
         {
           icon: Video,
-          title: "Salle de Réunion",
-          description: "Salles de réunion modernes et équipées (écrans, visioconférence) pour vos présentations, formations et réunions d'équipe.",
-          image: meetingRoomImg
+          title: "Salles de Réunion Ultra-Modernes",
+          description: "Salles de conférence équipées avec projecteur HD, visioconférence et connexion haut débit. Parfait pour formations et réunions.",
+          image: meetingRoomImg,
+          features: ["Équipement pro", "Visioconférence", "Capacité 20-50", "Réservation flexible"]
+        },
+        {
+          icon: Lightbulb,
+          title: "Accompagnement Digitalisation & Business",
+          description: "Services complets de transformation digitale : audit digital, stratégie business, refonte site web, e-commerce et marketing digital.",
+          image: null,
+          features: ["Audit digital", "Stratégie business", "Site web", "Marketing"]
         },
         {
           icon: Coffee,
-          title: "Café & Networking",
-          description: "Espace détente et networking pour échanger, collaborer et créer des synergies autour d'un café.",
-          image: cafeSpaceImg
+          title: "Programmes & Événements Tech",
+          description: "Hackathons, workshops, bootcamps intensifs et podcasts West Innovation pour booster l'écosystème tech de Bafoussam.",
+          image: cafeSpaceImg,
+          features: ["Hackathons", "Bootcamps", "Workshops", "Podcast"]
         }
       ],
       cta: "Réserver maintenant"
@@ -54,34 +59,39 @@ const Services = ({ lang }: ServicesProps) => {
       subtitle: "Tailored solutions to transform your vision into reality",
       services: [
         {
-          icon: Lightbulb,
-          title: "Consulting & Digital Strategy",
-          description: "Strategic support for companies and individuals in their digital transformation. Analysis, consulting and implementation of innovative solutions.",
-          image: null
+          icon: Users,
+          title: "West Innovation Space (Coworking)",
+          description: "24/7 coworking space with high-speed Starlink WiFi, permanent electricity. Join a dynamic community of innovators and entrepreneurs.",
+          image: coworkingImg,
+          features: ["24/7 Access", "Starlink WiFi", "Free Coffee", "Community"]
         },
         {
           icon: Building2,
-          title: "Private Offices",
-          description: "Private and equipped workspaces, perfect for teams and companies seeking a dedicated professional environment.",
-          image: privateOfficeImg
-        },
-        {
-          icon: Users,
-          title: "Coworking Space",
-          description: "Join a dynamic community of professionals and freelancers in a collaborative and inspiring environment.",
-          image: coworkingImg
+          title: "Equipped Private Offices",
+          description: "Fully equipped private offices for teams and companies. Flexible monthly contracts, premium professional environment.",
+          image: privateOfficeImg,
+          features: ["Furnished offices", "Flexible contracts", "Admin services", "24/7 Security"]
         },
         {
           icon: Video,
-          title: "Meeting Room",
-          description: "Modern and equipped meeting rooms (screens, video conferencing) for your presentations, training and team meetings.",
-          image: meetingRoomImg
+          title: "Ultra-Modern Meeting Rooms",
+          description: "Conference rooms equipped with HD projector, video conferencing and high-speed connection. Perfect for training and meetings.",
+          image: meetingRoomImg,
+          features: ["Pro equipment", "Video conferencing", "Capacity 20-50", "Flexible booking"]
+        },
+        {
+          icon: Lightbulb,
+          title: "Digitalization & Business Support",
+          description: "Complete digital transformation services: digital audit, business strategy, website redesign, e-commerce and digital marketing.",
+          image: null,
+          features: ["Digital audit", "Business strategy", "Website", "Marketing"]
         },
         {
           icon: Coffee,
-          title: "Café & Networking",
-          description: "Relaxation and networking space to exchange, collaborate and create synergies over coffee.",
-          image: cafeSpaceImg
+          title: "Tech Programs & Events",
+          description: "Hackathons, workshops, intensive bootcamps and West Innovation podcasts to boost Bafoussam's tech ecosystem.",
+          image: cafeSpaceImg,
+          features: ["Hackathons", "Bootcamps", "Workshops", "Podcast"]
         }
       ],
       cta: "Book Now"
@@ -131,11 +141,20 @@ const Services = ({ lang }: ServicesProps) => {
                       </div>
                       <h3 className="text-2xl font-bold">{service.title}</h3>
                     </div>
-                    <p className="text-white/90 mb-6 leading-relaxed">
+                    <p className="text-white/90 mb-4 leading-relaxed">
                       {service.description}
                     </p>
+                    {service.features && (
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {service.features.map((feature: string, idx: number) => (
+                          <span key={idx} className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs font-medium">
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                     <Button 
-                      className="bg-white text-primary hover:bg-white/90 font-semibold rounded-full"
+                      className="bg-accent text-white hover:bg-accent/90 font-semibold rounded-full"
                       onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
                     >
                       {t.cta} <ArrowRight className="ml-2 h-4 w-4" />
@@ -152,16 +171,26 @@ const Services = ({ lang }: ServicesProps) => {
                     {service.title}
                   </h3>
                   
-                  <p className="text-muted-foreground mb-8 leading-relaxed text-base">
+                  <p className="text-muted-foreground mb-6 leading-relaxed text-base">
                     {service.description}
                   </p>
+
+                  {service.features && (
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {service.features.map((feature: string, idx: number) => (
+                        <span key={idx} className="px-3 py-1 bg-primary/5 text-primary rounded-full text-xs font-medium">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   
                   <Button 
                     variant="outline" 
                     className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 rounded-full"
-                    onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   >
-                    {t.cta} <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    {lang === 'fr' ? 'Demander un devis' : 'Request Quote'} <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
               )}
