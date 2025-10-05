@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import logo from "@/assets/west-innovation-hub-logo.png";
+import logo from "@/assets/west-hub-logo.jpeg";
 import heroImage from "@/assets/hero-coworking.jpg";
 import JoinCommunityDialog from "./JoinCommunityDialog";
 
@@ -11,14 +11,14 @@ interface HeroProps {
 const Hero = ({ lang }: HeroProps) => {
   const content = {
     fr: {
-      title: "West Innovation Hub",
-      subtitle: "Le premier hub d'innovation de la région Ouest Cameroun. Espaces coworking moderne, bureaux privés équipés, salles de réunion high-tech. WiFi & électricité 24/7. Programmes de hackathons, bootcamps et podcasts pour booster l'écosystème tech de Bafoussam. Accompagnement digitalisation et stratégie business.",
+      title: "Connecter, Innover, Impacter",
+      subtitle: "West Hub Innovation est votre écosystème technologique à Bafoussam, stimulant l'innovation, l'entrepreneuriat et la collaboration pour transformer la Région de l'Ouest et l'Afrique Centrale.",
       cta1: "Réservez votre espace",
       cta2: "Rejoindre la communauté"
     },
     en: {
-      title: "West Innovation Hub",
-      subtitle: "The first innovation hub in Cameroon's West Region. Modern coworking spaces, equipped private offices, high-tech meeting rooms. 24/7 WiFi & electricity. Hackathons, bootcamps and podcasts programs to boost Bafoussam's tech ecosystem. Business strategy and digitalization support.",
+      title: "Connect, Innovate, Impact",
+      subtitle: "West Hub Innovation is your tech ecosystem in Bafoussam, driving innovation, entrepreneurship and collaboration to transform the West Region and Central Africa.",
       cta1: "Book Your Space",
       cta2: "Join the Community"
     }
