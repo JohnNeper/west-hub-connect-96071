@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Globe } from "lucide-react";
-import logo from "@/assets/west-hub-logo.jpeg";
+import logo from "@/assets/west-digital-hub-logo.png";
 
 interface NavigationProps {
   lang: 'fr' | 'en';
@@ -53,7 +53,7 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
-            <img src={logo} alt="West Hub" className="h-14 w-auto" />
+            <img src={logo} alt="West Digital Hub" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

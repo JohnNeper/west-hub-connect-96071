@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
-import logo from "@/assets/west-hub-logo.jpeg";
+import logo from "@/assets/west-digital-hub-logo.png";
 
 interface FooterProps {
   lang: 'fr' | 'en';
@@ -9,10 +9,12 @@ interface FooterProps {
 const Footer = ({ lang }: FooterProps) => {
   const content = {
     fr: {
-      tagline: "Connecter, Innover, Impacter",
-      quickLinks: "Liens Rapides",
-      pages: "Pages",
-      legal: "Mentions Légales",
+      tagline: "Connect - Innove - Impact",
+      address: "Bafoussam, Région de l'Ouest, Cameroun",
+      phone: "+237 6 XX XX XX XX",
+      email: "contact@westdigitalhub.cm",
+      pages: "Navigation",
+      legal: "Informations",
       privacy: "Politique de Confidentialité",
       terms: "Conditions d'Utilisation",
       follow: "Suivez-nous",
@@ -21,17 +23,18 @@ const Footer = ({ lang }: FooterProps) => {
         home: "Accueil",
         about: "À propos",
         services: "Services",
-        team: "Équipe",
+        coworking: "Coworking",
         blog: "Blog",
-        booking: "Réservation",
         contact: "Contact"
       }
     },
     en: {
-      tagline: "Connect, Innovate, Impact",
-      quickLinks: "Quick Links",
-      pages: "Pages",
-      legal: "Legal Notice",
+      tagline: "Connect - Innovate - Impact",
+      address: "Bafoussam, West Region, Cameroon",
+      phone: "+237 6 XX XX XX XX",
+      email: "contact@westdigitalhub.cm",
+      pages: "Navigation",
+      legal: "Information",
       privacy: "Privacy Policy",
       terms: "Terms of Use",
       follow: "Follow Us",
@@ -40,9 +43,8 @@ const Footer = ({ lang }: FooterProps) => {
         home: "Home",
         about: "About",
         services: "Services",
-        team: "Team",
+        coworking: "Coworking",
         blog: "Blog",
-        booking: "Booking",
         contact: "Contact"
       }
     }
@@ -63,10 +65,13 @@ const Footer = ({ lang }: FooterProps) => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <img src={logo} alt="West Hub Innovation" className="h-16 w-auto mb-4" />
-            <p className="text-primary-foreground/80 text-sm">
+            <img src={logo} alt="West Digital Hub" className="h-14 w-auto mb-4" />
+            <p className="text-primary-foreground/80 text-sm mb-2">
               {t.tagline}
             </p>
+            <p className="text-primary-foreground/70 text-xs mb-1">{t.address}</p>
+            <p className="text-primary-foreground/70 text-xs mb-1">{t.phone}</p>
+            <p className="text-primary-foreground/70 text-xs">{t.email}</p>
           </div>
 
           {/* Quick Links */}
@@ -89,19 +94,14 @@ const Footer = ({ lang }: FooterProps) => {
                 </Link>
               </li>
               <li>
-                <Link to="/team" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
-                  {t.links.team}
+                <Link to="/coworking" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
+                  {t.links.coworking}
                 </Link>
               </li>
               <li>
                 <Link to="/blog" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
                   {t.links.blog}
                 </Link>
-              </li>
-              <li>
-                <a href="/#booking" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
-                  {t.links.booking}
-                </a>
               </li>
               <li>
                 <a href="/#contact" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
@@ -131,15 +131,15 @@ const Footer = ({ lang }: FooterProps) => {
           {/* Social */}
           <div>
             <h3 className="font-bold text-lg mb-4">{t.follow}</h3>
-            <div className="flex gap-4">
+            <div className="flex gap-3 mb-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg flex items-center justify-center transition-colors"
+                  className="w-10 h-10 bg-accent/20 hover:bg-accent/30 rounded-lg flex items-center justify-center transition-colors"
                 >
-                  <social.icon className="h-5 w-5" />
+                  <social.icon className="h-5 w-5 text-accent" />
                 </a>
               ))}
             </div>
@@ -148,7 +148,7 @@ const Footer = ({ lang }: FooterProps) => {
 
         <div className="border-t border-primary-foreground/20 pt-8 text-center">
           <p className="text-primary-foreground/80 text-sm">
-            © {new Date().getFullYear()} West Hub Innovation. {t.rights}
+            © {new Date().getFullYear()} West Digital Hub. {t.rights}
           </p>
         </div>
       </div>

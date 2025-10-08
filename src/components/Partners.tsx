@@ -9,9 +9,9 @@ interface PartnersProps {
 const Partners = ({ lang }: PartnersProps) => {
   const content = {
     fr: {
-      title: "Partenaires & Sponsors",
-      subtitle: "Construisons ensemble l'écosystème tech de demain",
-      description: "West Hub Innovation recherche des partenaires stratégiques et sponsors pour amplifier notre impact. Rejoignez-nous dans cette aventure et contribuez au développement de l'innovation en Afrique Centrale.",
+      title: "Nos Partenaires",
+      subtitle: "Ensemble pour l'innovation à l'Ouest",
+      description: "West Digital Hub collabore avec des partenaires stratégiques pour développer l'écosystème tech de la région de l'Ouest Cameroun.",
       benefits: [
         {
           icon: TrendingUp,
@@ -38,9 +38,9 @@ const Partners = ({ lang }: PartnersProps) => {
       sponsorCta: "Devenir Sponsor"
     },
     en: {
-      title: "Partners & Sponsors",
-      subtitle: "Let's build tomorrow's tech ecosystem together",
-      description: "West Hub Innovation is looking for strategic partners and sponsors to amplify our impact. Join us in this adventure and contribute to the development of innovation in Central Africa.",
+      title: "Our Partners",
+      subtitle: "Together for innovation in the West",
+      description: "West Digital Hub collaborates with strategic partners to develop the tech ecosystem of the West Region of Cameroon.",
       benefits: [
         {
           icon: TrendingUp,
@@ -123,20 +123,23 @@ const Partners = ({ lang }: PartnersProps) => {
           </Button>
         </div>
 
-        {/* Placeholder for partner logos */}
+        {/* Partner logos */}
         <div className="mt-20 animate-fade-in">
           <div className="text-center mb-12">
-            <p className="text-muted-foreground font-medium">
-              {lang === 'fr' ? 'Nos Partenaires' : 'Our Partners'}
+            <h3 className="text-2xl font-bold text-foreground mb-2">
+              {lang === 'fr' ? 'Ils nous font confiance' : 'They trust us'}
+            </h3>
+            <p className="text-muted-foreground">
+              {lang === 'fr' ? 'Partenaires stratégiques et sponsors' : 'Strategic partners and sponsors'}
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-50">
-            {[1, 2, 3, 4].map((i) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {['West Tech', 'Université de Dschang', 'Orange Cameroun', 'MTN Cameroon'].map((partner, i) => (
               <div 
                 key={i}
-                className="aspect-video bg-muted rounded-lg flex items-center justify-center"
+                className="aspect-video bg-card rounded-lg flex items-center justify-center border border-border p-6 hover:shadow-card transition-all"
               >
-                <span className="text-muted-foreground text-sm">Logo {i}</span>
+                <span className="text-foreground font-semibold text-center text-sm">{partner}</span>
               </div>
             ))}
           </div>
