@@ -18,10 +18,10 @@ const CoworkingPage = () => {
 
   const content = {
     fr: {
-      title: "Coworking Bafoussam — West Innovation Space",
+      title: "Coworking Bafoussam — West Digital Hub",
       subtitle: "Espace de coworking 24/7 à Bafoussam. Postes partagés, bureaux privés, wifi Starlink, salles de réunion. Offres flexibles pour freelances et startups.",
       hero: {
-        title: "West Innovation Space",
+        title: "West Digital Hub",
         subtitle: "Votre espace de travail professionnel à Bafoussam",
         description: "Coworking 24/7, WiFi Starlink haut débit, électricité permanente, et une communauté dynamique d'innovateurs."
       },
@@ -46,7 +46,7 @@ const CoworkingPage = () => {
             image: privateOfficeImg,
             title: "Bureaux Privés",
             description: "Espaces privés pour équipes 2-8 personnes",
-            price: "À partir de 150.000 FCFA/mois"
+            price: "À partir de 100.000 FCFA/mois"
           },
           {
             image: meetingRoomImg,
@@ -92,7 +92,7 @@ const CoworkingPage = () => {
           },
           {
             name: "Bureau Privé",
-            price: "150.000",
+            price: "100.000",
             period: "mois",
             features: [
               "Bureau privé fermé",
@@ -107,10 +107,10 @@ const CoworkingPage = () => {
       cta: "Réserver maintenant"
     },
     en: {
-      title: "Coworking Bafoussam — West Innovation Space",
+      title: "Coworking Bafoussam — West Digital Hub",
       subtitle: "24/7 coworking space in Bafoussam. Shared desks, private offices, Starlink wifi, meeting rooms. Flexible offers for freelancers and startups.",
       hero: {
-        title: "West Innovation Space",
+        title: "West Digital Hub",
         subtitle: "Your professional workspace in Bafoussam",
         description: "24/7 coworking, high-speed Starlink WiFi, permanent electricity, and a dynamic community of innovators."
       },
@@ -135,7 +135,7 @@ const CoworkingPage = () => {
             image: privateOfficeImg,
             title: "Private Offices",
             description: "Private spaces for 2-8 person teams",
-            price: "From 150,000 FCFA/month"
+            price: "From 100,000 FCFA/month"
           },
           {
             image: meetingRoomImg,
@@ -181,7 +181,7 @@ const CoworkingPage = () => {
           },
           {
             name: "Private Office",
-            price: "150,000",
+            price: "100,000",
             period: "month",
             features: [
               "Closed private office",

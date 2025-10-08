@@ -13,14 +13,14 @@ const About = ({ lang }: AboutProps) => {
   const content = {
     fr: {
       title: "Un écosystème complet pour l'innovation",
-      mission: "West Innovation Hub est l'infrastructure physique dédiée à l'accélération de l'écosystème tech de l'Ouest Cameroun. Situé à Bafoussam, nous offrons un environnement professionnel moderne avec WiFi Starlink et électricité garantis 24/7.",
-      vision: "Nous proposons le West Innovation Space (coworking), des bureaux privés équipés, des salles de réunion ultra-modernes, et des programmes (podcasts, hackathons, bootcamps). Nous accompagnons aussi les PME dans leur digitalisation et stratégie business.",
+      mission: "West Digital Hub est l'infrastructure physique dédiée à l'accélération de l'écosystème tech de l'Ouest Cameroun. Situé à Bafoussam, nous offrons un environnement professionnel moderne avec WiFi Starlink et électricité garantis 24/7.",
+      vision: "Nous proposons le West Digital Hub Space (coworking), des bureaux privés équipés, des salles de réunion ultra-modernes, et des programmes (podcasts, hackathons, bootcamps). Nous accompagnons aussi les PME dans leur digitalisation et stratégie business.",
       cta: "En savoir plus"
     },
     en: {
       title: "A Complete Innovation Ecosystem",
-      mission: "West Innovation Hub is the physical infrastructure dedicated to accelerating the West Cameroon tech ecosystem. Located in Bafoussam, we offer a modern professional environment with Starlink WiFi and guaranteed 24/7 electricity.",
-      vision: "We offer West Innovation Space (coworking), equipped private offices, ultra-modern meeting rooms, and programs (podcasts, hackathons, bootcamps). We also support SMEs in their digitalization and business strategy.",
+      mission: "West Digital Hub is the physical infrastructure dedicated to accelerating the West Cameroon tech ecosystem. Located in Bafoussam, we offer a modern professional environment with Starlink WiFi and guaranteed 24/7 electricity.",
+      vision: "We offer West Digital Hub Space (coworking), equipped private offices, ultra-modern meeting rooms, and programs (podcasts, hackathons, bootcamps). We also support SMEs in their digitalization and business strategy.",
       cta: "Learn more"
     }
   };

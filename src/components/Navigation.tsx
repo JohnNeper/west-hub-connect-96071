@@ -21,6 +21,7 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
       services: "Services",
       team: "Équipe",
       blog: "Blog",
+      contact: "Contact",
       book: "Réserver"
     },
     en: {
@@ -29,22 +30,20 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
       services: "Services",
       team: "Team",
       blog: "Blog",
+      contact: "Contact",
       book: "Book Now"
     }
   };
 
   const t = content[lang];
 
-  const navItems = isHome ? [
-    { label: t.about, href: "#about", isSection: true },
-    { label: t.services, href: "#services", isSection: true },
-    { label: t.book, href: "#booking", isSection: true },
-  ] : [
+  const navItems = [
     { label: t.home, href: "/", isSection: false },
     { label: t.about, href: "/about", isSection: false },
     { label: t.services, href: "/services", isSection: false },
     { label: t.team, href: "/team", isSection: false },
     { label: t.blog, href: "/blog", isSection: false },
+    { label: t.contact, href: "/contact", isSection: false },
   ];
 
   return (

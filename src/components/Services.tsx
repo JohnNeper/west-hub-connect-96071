@@ -18,7 +18,7 @@ const Services = ({ lang }: ServicesProps) => {
       services: [
         {
           icon: Users,
-          title: "West Innovation Space (Coworking)",
+          title: "West Digital Hub Space (Coworking)",
           description: "Espace de coworking 24/7 avec WiFi Starlink haut débit, électricité permanente. Rejoignez une communauté dynamique d'innovateurs et entrepreneurs.",
           image: coworkingImg,
           features: ["Accès 24/7", "WiFi Starlink", "Café gratuit", "Communauté"]
@@ -60,7 +60,7 @@ const Services = ({ lang }: ServicesProps) => {
       services: [
         {
           icon: Users,
-          title: "West Innovation Space (Coworking)",
+          title: "West Digital Hub Space (Coworking)",
           description: "24/7 coworking space with high-speed Starlink WiFi, permanent electricity. Join a dynamic community of innovators and entrepreneurs.",
           image: coworkingImg,
           features: ["24/7 Access", "Starlink WiFi", "Free Coffee", "Community"]

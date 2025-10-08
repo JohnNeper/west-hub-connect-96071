@@ -111,6 +111,7 @@ const Partners = ({ lang }: PartnersProps) => {
           <Button 
             size="lg"
             className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-6 text-lg shadow-glow"
+            onClick={() => window.location.href = '/contact'}
           >
             {t.cta}
           </Button>
@@ -118,6 +119,7 @@ const Partners = ({ lang }: PartnersProps) => {
             size="lg"
             variant="outline"
             className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground font-semibold px-8 py-6 text-lg"
+            onClick={() => window.location.href = '/contact'}
           >
             {t.sponsorCta}
           </Button>
