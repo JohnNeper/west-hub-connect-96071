@@ -1,5 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Linkedin } from "lucide-react";
+import orlaneImg from "@/assets/team-orlane.jpg";
+import patrickImg from "@/assets/team-patrick.jpg";
+import therenceImg from "@/assets/team-therence.jpg";
 
 interface TeamProps {
   lang: 'fr' | 'en';
@@ -34,24 +37,36 @@ const Team = ({ lang }: TeamProps) => {
     {
       name: 'Therence Ngniguepa',
       role: lang === 'fr' ? 'Fondateur & CEO' : 'Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+      experience: lang === 'fr' 
+        ? 'Entrepreneur tech passionné, visionnaire de l\'écosystème West Tech. Expert en innovation et développement de startups avec 5+ ans d\'expérience.' 
+        : 'Passionate tech entrepreneur, West Tech ecosystem visionary. Expert in innovation and startup development with 5+ years of experience.',
+      image: therenceImg,
       linkedin: 'https://cm.linkedin.com/in/therence-ngniguepa-648750222'
     },
     {
       name: 'Orlane Motue Sandra',
       role: lang === 'fr' ? 'Directrice des Opérations' : 'Operations Director',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop',
+      experience: lang === 'fr'
+        ? 'Spécialiste en gestion opérationnelle et développement communautaire. 4+ ans d\'expérience en coordination de projets tech et événements.'
+        : 'Specialist in operational management and community development. 4+ years of experience in tech project coordination and events.',
+      image: orlaneImg,
       linkedin: '#'
     },
     {
       name: 'Patrick Manfouo',
       role: lang === 'fr' ? 'Directeur Technique' : 'Technical Director',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop',
+      experience: lang === 'fr'
+        ? 'Développeur senior et architecte logiciel. Expert en solutions tech innovantes avec 6+ ans d\'expérience en développement full-stack.'
+        : 'Senior developer and software architect. Expert in innovative tech solutions with 6+ years of full-stack development experience.',
+      image: patrickImg,
       linkedin: '#'
     },
     {
       name: 'Prof Fouotsa Emmanuel',
       role: lang === 'fr' ? 'Advisor, Associate & Board Member' : 'Advisor, Associate & Board Member',
+      experience: lang === 'fr'
+        ? 'Professeur et chercheur renommé. Conseiller stratégique avec expertise académique et industrielle de 15+ ans en technologie et innovation.'
+        : 'Renowned professor and researcher. Strategic advisor with 15+ years of academic and industrial expertise in technology and innovation.',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop',
       linkedin: 'https://cm.linkedin.com/in/emmanuel-fouotsa-9b6820254'
     }
@@ -72,7 +87,7 @@ const Team = ({ lang }: TeamProps) => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16 animate-slide-up">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16 animate-slide-up">
           {teamMembers.map((member, index) => (
             <Card key={index} className="overflow-hidden shadow-card hover:shadow-glow transition-all duration-300 group">
               <div className="aspect-square overflow-hidden">
@@ -82,14 +97,17 @@ const Team = ({ lang }: TeamProps) => {
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-foreground mb-2">
+              <div className="p-4 lg:p-6">
+                <h3 className="text-lg lg:text-xl font-bold text-foreground mb-2">
                   {member.name}
                 </h3>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-sm lg:text-base text-accent font-semibold mb-3">
                   {member.role}
                 </p>
-                <div className="flex gap-3 justify-center">
+                <p className="text-xs lg:text-sm text-muted-foreground mb-4 line-clamp-4">
+                  {member.experience}
+                </p>
+                <div className="flex gap-3 justify-start">
                   <a 
                     href={member.linkedin} 
                     target="_blank" 

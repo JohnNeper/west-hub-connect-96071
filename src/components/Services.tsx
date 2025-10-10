@@ -119,64 +119,69 @@ const Services = ({ lang }: ServicesProps) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12">
           {t.services.map((service, index) => (
             <Card
               key={index}
-              className="group relative overflow-hidden rounded-3xl border-border hover:border-primary/50 transition-all duration-500 hover:shadow-glow"
+              className="group relative overflow-hidden rounded-2xl lg:rounded-3xl border-border hover:border-primary/50 transition-all duration-500 hover:shadow-glow"
             >
               {service.image ? (
-                <div className="relative h-80 overflow-hidden">
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  
-                  <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-white/20 backdrop-blur-sm p-3 rounded-xl">
-                        <service.icon className="h-6 w-6" />
+                <div className="flex flex-col md:flex-row lg:flex-col">
+                  <div className="relative h-48 md:h-64 lg:h-72 overflow-hidden md:w-1/2 lg:w-full">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r lg:bg-gradient-to-b from-black/60 via-black/30 to-transparent"></div>
+                    
+                    <div className="absolute top-4 left-4 lg:top-6 lg:left-6">
+                      <div className="bg-white/20 backdrop-blur-sm p-2 lg:p-3 rounded-xl">
+                        <service.icon className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold">{service.title}</h3>
                     </div>
-                    <p className="text-white/90 mb-4 leading-relaxed">
+                  </div>
+                  
+                  <div className="p-6 lg:p-8 md:w-1/2 lg:w-full flex flex-col">
+                    <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 lg:mb-4">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm lg:text-base text-muted-foreground mb-4 lg:mb-6 leading-relaxed flex-grow">
                       {service.description}
                     </p>
                     {service.features && (
-                      <div className="flex flex-wrap gap-2 mb-6">
+                      <div className="flex flex-wrap gap-2 mb-4 lg:mb-6">
                         {service.features.map((feature: string, idx: number) => (
-                          <span key={idx} className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs font-medium">
+                          <span key={idx} className="px-3 py-1 bg-primary/5 text-primary rounded-full text-xs font-medium">
                             {feature}
                           </span>
                         ))}
                       </div>
                     )}
                     <Button 
-                      className="bg-accent text-white hover:bg-accent/90 font-semibold rounded-full"
-                      onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+                      className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-full w-full sm:w-auto"
+                      onClick={() => window.location.href = '/contact'}
                     >
                       {t.cta} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </div>
                 </div>
               ) : (
-                <div className="p-10">
-                  <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-5 rounded-2xl w-fit mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <service.icon className="h-10 w-10 text-primary" />
+                <div className="p-6 lg:p-10">
+                  <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-4 lg:p-5 rounded-2xl w-fit mb-4 lg:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <service.icon className="h-8 w-8 lg:h-10 lg:w-10 text-primary" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="text-xl lg:text-2xl font-bold mb-3 lg:mb-4 text-foreground group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
                   
-                  <p className="text-muted-foreground mb-6 leading-relaxed text-base">
+                  <p className="text-sm lg:text-base text-muted-foreground mb-4 lg:mb-6 leading-relaxed">
                     {service.description}
                   </p>
 
                   {service.features && (
-                    <div className="flex flex-wrap gap-2 mb-8">
+                    <div className="flex flex-wrap gap-2 mb-6 lg:mb-8">
                       {service.features.map((feature: string, idx: number) => (
                         <span key={idx} className="px-3 py-1 bg-primary/5 text-primary rounded-full text-xs font-medium">
                           {feature}
@@ -187,8 +192,8 @@ const Services = ({ lang }: ServicesProps) => {
                   
                   <Button 
                     variant="outline" 
-                    className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 rounded-full"
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 rounded-full w-full sm:w-auto"
+                    onClick={() => window.location.href = '/contact'}
                   >
                     {lang === 'fr' ? 'Demander un devis' : 'Request Quote'} <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
