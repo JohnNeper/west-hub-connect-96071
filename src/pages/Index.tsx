@@ -8,6 +8,7 @@ import Booking from "@/components/Booking";
 import Partners from "@/components/Partners";
 import Team from "@/components/Team";
 import Contact from "@/components/Contact";
+import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -28,6 +29,7 @@ const Index = () => {
       <Partners lang={lang} />
       <Team lang={lang} />
       <Contact lang={lang} />
+      <Newsletter lang={lang} />
       <Footer lang={lang} />
     </div>
   );

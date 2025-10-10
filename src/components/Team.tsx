@@ -3,6 +3,7 @@ import { Linkedin } from "lucide-react";
 import orlaneImg from "@/assets/team-orlane.jpg";
 import patrickImg from "@/assets/team-patrick.jpg";
 import therenceImg from "@/assets/team-therence.jpg";
+import fouotsaImg from "@/assets/team-fouotsa.jpg";
 
 interface TeamProps {
   lang: 'fr' | 'en';
@@ -67,7 +68,7 @@ const Team = ({ lang }: TeamProps) => {
       experience: lang === 'fr'
         ? 'Professeur et chercheur renommé. Conseiller stratégique avec expertise académique et industrielle de 15+ ans en technologie et innovation.'
         : 'Renowned professor and researcher. Strategic advisor with 15+ years of academic and industrial expertise in technology and innovation.',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop',
+      image: fouotsaImg,
       linkedin: 'https://cm.linkedin.com/in/emmanuel-fouotsa-9b6820254'
     }
   ];

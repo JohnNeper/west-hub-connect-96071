@@ -6,13 +6,15 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { Calendar, Clock, MapPin, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface BookingProps {
   lang: 'fr' | 'en';
 }
 
 const Booking = ({ lang }: BookingProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -94,20 +96,40 @@ const Booking = ({ lang }: BookingProps) => {
 
   const t = content[lang];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success(t.success, {
-      description: t.successDesc
-    });
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      spaceType: "",
-      date: "",
-      duration: "",
-      message: ""
-    });
+    setIsLoading(true);
+
+    try {
+      const { error } = await supabase.functions.invoke('send-booking', {
+        body: { ...formData, lang }
+      });
+
+      if (error) throw error;
+
+      toast.success(t.success, {
+        description: t.successDesc
+      });
+      
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        spaceType: "",
+        date: "",
+        duration: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("Booking error:", error);
+      toast.error(lang === 'fr' ? "Erreur" : "Error", {
+        description: lang === 'fr' 
+          ? "Une erreur est survenue. Veuillez réessayer." 
+          : "An error occurred. Please try again."
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -224,8 +246,16 @@ const Booking = ({ lang }: BookingProps) => {
                   type="submit" 
                   size="lg"
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-semibold"
+                  disabled={isLoading}
                 >
-                  {t.submit}
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      {lang === 'fr' ? 'Envoi...' : 'Sending...'}
+                    </>
+                  ) : (
+                    t.submit
+                  )}
                 </Button>
               </form>
             </Card>

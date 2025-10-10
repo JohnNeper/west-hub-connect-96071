@@ -160,7 +160,12 @@ const Services = ({ lang }: ServicesProps) => {
                     )}
                     <Button 
                       className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-full w-full sm:w-auto"
-                      onClick={() => window.location.href = '/contact'}
+                      onClick={() => {
+                        const bookingSection = document.getElementById('booking');
+                        if (bookingSection) {
+                          bookingSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
                     >
                       {t.cta} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -193,7 +198,9 @@ const Services = ({ lang }: ServicesProps) => {
                   <Button 
                     variant="outline" 
                     className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 rounded-full w-full sm:w-auto"
-                    onClick={() => window.location.href = '/contact'}
+                    onClick={() => {
+                      window.location.href = '/contact';
+                    }}
                   >
                     {lang === 'fr' ? 'Demander un devis' : 'Request Quote'} <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>

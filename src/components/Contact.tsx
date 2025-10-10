@@ -5,14 +5,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Mail, Phone, MapPin, Users, Calendar } from "lucide-react";
+import { Mail, Phone, MapPin, Users, Calendar, Loader2 } from "lucide-react";
 import JoinCommunityDialog from "./JoinCommunityDialog";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ContactProps {
   lang: 'fr' | 'en';
 }
 
 const Contact = ({ lang }: ContactProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -69,17 +71,37 @@ const Contact = ({ lang }: ContactProps) => {
 
   const t = content[lang];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success(t.success, {
-      description: t.successDesc
-    });
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
+    setIsLoading(true);
+
+    try {
+      const { error } = await supabase.functions.invoke('send-contact', {
+        body: { ...formData, lang }
+      });
+
+      if (error) throw error;
+
+      toast.success(t.success, {
+        description: t.successDesc
+      });
+      
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("Contact error:", error);
+      toast.error(lang === 'fr' ? "Erreur" : "Error", {
+        description: lang === 'fr' 
+          ? "Une erreur est survenue. Veuillez réessayer." 
+          : "An error occurred. Please try again."
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -237,8 +259,16 @@ const Contact = ({ lang }: ContactProps) => {
                 type="submit" 
                 size="lg"
                 className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+                disabled={isLoading}
               >
-                {t.submit}
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    {lang === 'fr' ? 'Envoi...' : 'Sending...'}
+                  </>
+                ) : (
+                  t.submit
+                )}
               </Button>
             </form>
           </Card>
