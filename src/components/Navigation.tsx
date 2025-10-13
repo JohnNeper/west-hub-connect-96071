@@ -52,7 +52,7 @@ const Navigation = ({ lang, toggleLang }: NavigationProps) => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
-            <img src={logo} alt="West Digital Hub" className="h-12 w-auto" />
+            <img src={logo} alt="West Digital Hub" className="h-16 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
