@@ -55,11 +55,13 @@ const Hero = ({ lang }: HeroProps) => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 py-32 text-center">
         <div className="flex justify-center mb-8 animate-fade-in">
-          <img 
-            src={logo} 
-            alt="West Digital Hub Logo" 
-            className="h-20 md:h-28 w-auto drop-shadow-2xl"
-          />
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-2xl">
+            <img 
+              src={logo} 
+              alt="West Digital Hub Logo - Espace de coworking à Bafoussam" 
+              className="h-24 md:h-32 w-auto"
+            />
+          </div>
         </div>
         
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-accent mb-6 animate-slide-up">
