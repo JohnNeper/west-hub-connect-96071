@@ -8,12 +8,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Calendar, User, ArrowLeft, Heart, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import westHubLaunch from "@/assets/blog-west-hub-launch.jpg";
-import digitalTransformation from "@/assets/blog-digital-transformation.jpg";
-import successStory from "@/assets/blog-success-story.jpg";
-import bootcamp from "@/assets/blog-bootcamp.jpg";
-import report2023 from "@/assets/blog-report-2023.jpg";
-import techTrends from "@/assets/blog-tech-trends.jpg";
+import westtechWorkspace from "@/assets/westtech-workspace.jpeg";
+import blockchainTalk from "@/assets/blockchain-talk.jpeg";
+import teamPatrick from "@/assets/team-patrick-real.jpg";
+import teamDilane from "@/assets/team-dilane.jpg";
+import heroCoworking from "@/assets/hero-coworking.jpg";
 
 const BlogArticlePage = () => {
   const { id } = useParams();
@@ -65,7 +64,7 @@ const BlogArticlePage = () => {
         category: "Événement",
         date: "27 Juillet 2025",
         author: "West Tech Team",
-        image: westHubLaunch,
+        image: westtechWorkspace,
         content: `
           <h2>Le rendez-vous incontournable de la tech à l'Ouest</h2>
           <p>Le West All Tech Festival 2025 est l'événement tech majeur de la Région de l'Ouest Cameroun. Plus de 150 participants sont attendus pour célébrer l'innovation et l'entrepreneuriat tech.</p>
@@ -94,7 +93,7 @@ const BlogArticlePage = () => {
         category: "Annonce",
         date: "15 Juin 2025",
         author: "Therence Ngniguepa",
-        image: digitalTransformation,
+        image: heroCoworking,
         content: `
           <h2>Une nouvelle ère numérique s'ouvre à l'Ouest Cameroun</h2>
           <p>Nous posons les bases du West Digital Hub, le premier hub tech avec WiFi Starlink 24/7 à Bafoussam, Région de l'Ouest Cameroun.</p>
@@ -121,7 +120,7 @@ const BlogArticlePage = () => {
         category: "Talk",
         date: "20 Juin 2025",
         author: "Patrick Manfouo",
-        image: techTrends,
+        image: blockchainTalk,
         content: `
           <h2>West Tech Talk Program</h2>
           <p>Rejoignez nos sessions hebdomadaires featuring des entrepreneurs à succès, experts de l'industrie et innovateurs tech qui partagent leurs insights et conseils pratiques.</p>
@@ -147,7 +146,7 @@ const BlogArticlePage = () => {
         category: "Hackathon",
         date: "5 Septembre 2024",
         author: "Dilane Goune",
-        image: bootcamp,
+        image: teamDilane,
         content: `
           <h2>Un hackathon cybersécurité intense</h2>
           <p>En partenariat avec l'Orange Digital Center de Dschang, nous avons organisé un hackathon Capture The Flag rassemblant plus de 200 participants.</p>
@@ -174,7 +173,7 @@ const BlogArticlePage = () => {
         category: "Funding",
         date: "20 Septembre 2024",
         author: "Sandra Motue",
-        image: successStory,
+        image: teamPatrick,
         content: `
           <h2>Présentez votre startup aux investisseurs</h2>
           <p>L'Investor Pitch Day est une opportunité unique pour les startups de l'écosystème West Tech de présenter leurs projets à un panel d'investisseurs.</p>
@@ -201,7 +200,7 @@ const BlogArticlePage = () => {
         category: "Partenariat",
         date: "10 Mai 2024",
         author: "West Tech Team",
-        image: report2023,
+        image: westtechWorkspace,
         content: `
           <h2>Un partenariat stratégique pour l'innovation</h2>
           <p>West Tech et l'Université de Dschang unissent leurs forces pour développer l'entrepreneuriat étudiant et la recherche appliquée dans la région Ouest.</p>
@@ -230,7 +229,7 @@ const BlogArticlePage = () => {
         category: "Event",
         date: "July 27, 2025",
         author: "West Tech Team",
-        image: westHubLaunch,
+        image: westtechWorkspace,
         content: `
           <h2>The must-attend tech event in the West</h2>
           <p>The West All Tech Festival 2025 is the major tech event of the West Region of Cameroon. Over 150 participants are expected to celebrate tech innovation and entrepreneurship.</p>
@@ -259,7 +258,7 @@ const BlogArticlePage = () => {
         category: "Announcement",
         date: "June 15, 2025",
         author: "Therence Ngniguepa",
-        image: digitalTransformation,
+        image: heroCoworking,
         content: `
           <h2>A new digital era opens in Western Cameroon</h2>
           <p>We are laying the foundation for West Digital Hub, the first tech hub with 24/7 Starlink WiFi in Bafoussam, West Region of Cameroon.</p>
@@ -286,7 +285,7 @@ const BlogArticlePage = () => {
         category: "Talk",
         date: "June 20, 2025",
         author: "Patrick Manfouo",
-        image: techTrends,
+        image: blockchainTalk,
         content: `
           <h2>West Tech Talk Program</h2>
           <p>Join our weekly sessions featuring successful entrepreneurs, industry experts and tech innovators who share insights and practical advice.</p>
@@ -312,7 +311,7 @@ const BlogArticlePage = () => {
         category: "Hackathon",
         date: "September 5, 2024",
         author: "Dilane Goune",
-        image: bootcamp,
+        image: teamDilane,
         content: `
           <h2>An Intense Cybersecurity Hackathon</h2>
           <p>In partnership with Orange Digital Center in Dschang, we organized a Capture The Flag hackathon bringing together over 200 participants.</p>
@@ -339,7 +338,7 @@ const BlogArticlePage = () => {
         category: "Funding",
         date: "September 20, 2024",
         author: "Sandra Motue",
-        image: successStory,
+        image: teamPatrick,
         content: `
           <h2>Present Your Startup to Investors</h2>
           <p>Investor Pitch Day is a unique opportunity for West Tech ecosystem startups to present their projects to a panel of investors.</p>
@@ -366,7 +365,7 @@ const BlogArticlePage = () => {
         category: "Partnership",
         date: "May 10, 2024",
         author: "West Tech Team",
-        image: report2023,
+        image: westtechWorkspace,
         content: `
           <h2>A Strategic Partnership for Innovation</h2>
           <p>West Tech and University of Dschang join forces to develop student entrepreneurship and applied research in the West region.</p>

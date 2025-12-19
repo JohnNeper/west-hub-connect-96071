@@ -5,12 +5,12 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, User, ArrowRight } from "lucide-react";
-import westHubLaunch from "@/assets/blog-west-hub-launch.jpg";
-import digitalTransformation from "@/assets/blog-digital-transformation.jpg";
-import successStory from "@/assets/blog-success-story.jpg";
-import bootcamp from "@/assets/blog-bootcamp.jpg";
-import report2023 from "@/assets/blog-report-2023.jpg";
-import techTrends from "@/assets/blog-tech-trends.jpg";
+import westtechWorkspace from "@/assets/westtech-workspace.jpeg";
+import blockchainTalk from "@/assets/blockchain-talk.jpeg";
+import teamPatrick from "@/assets/team-patrick-real.jpg";
+import teamDilane from "@/assets/team-dilane.jpg";
+import teamTherence from "@/assets/team-therence.jpg";
+import heroCoworking from "@/assets/hero-coworking.jpg";
 
 const BlogPage = () => {
   const [lang, setLang] = useState<'fr' | 'en'>('fr');
@@ -30,61 +30,61 @@ const BlogPage = () => {
         {
           id: "west-all-tech-festival-2025",
           title: "West All Tech Festival 2025 : Le plus grand événement tech de l'Ouest Cameroun",
-          excerpt: "Rejoignez-nous le 27 Juillet 2025 au West Digital Hub à Bafoussam pour le West All Tech Festival ! Plus de 150 participants attendus pour célébrer l'innovation tech de la région Ouest.",
+          excerpt: "Rejoignez-nous le 27 Juillet 2025 au West Digital Hub à Bafoussam pour le West All Tech Festival ! Plus de 150 participants attendus pour célébrer l'innovation tech de la région Ouest. Networking, conférences, hackathons et bien plus !",
           category: "Événement",
           date: "27 Juillet 2025",
           author: "West Tech Team",
-          image: westHubLaunch,
+          image: westtechWorkspace,
           featured: true
         },
         {
           id: "inauguration-west-digital-hub",
           title: "Inauguration du West Digital Hub : Une nouvelle ère numérique pour l'Ouest",
-          excerpt: "Le West Digital Hub ouvre officiellement ses portes à Bafoussam. Premier hub tech avec WiFi Starlink 24/7, coworking, bureaux privés et programmes d'accompagnement pour entrepreneurs.",
+          excerpt: "Le West Digital Hub ouvre officiellement ses portes à Bafoussam. Premier hub tech de la région avec WiFi Starlink 24/7, espaces de coworking modernes, bureaux privés et programmes d'accompagnement pour les entrepreneurs locaux.",
           category: "Annonce",
           date: "15 Juin 2025",
           author: "Therence Ngniguepa",
-          image: digitalTransformation,
+          image: heroCoworking,
           featured: false
         },
         {
           id: "innovator-talks-blockchain",
           title: "Innovator Talks : Blockchain & Opportunités en Afrique avec Duclair Fopa Kuete",
-          excerpt: "Chaque vendredi de 16h à 18h, rejoignez nos sessions Innovator Talks. Ce mois-ci : Duclair Fopa Kuete, CEO de TalantaChain, sur le thème 'Blockchain & Opportunités en Afrique'.",
+          excerpt: "Chaque vendredi de 16h à 18h, rejoignez nos sessions Innovator Talks au West Digital Hub. Ce mois-ci : Duclair Fopa Kuete, CEO de TalantaChain, partage son expertise sur 'Blockchain & Opportunités en Afrique'.",
           category: "Talk",
           date: "20 Juin 2025",
           author: "Patrick Manfouo",
-          image: techTrends,
+          image: blockchainTalk,
           featured: false
         },
         {
           id: "capture-the-flag-hackathon",
           title: "Capture The Flag Hackathon à l'Orange Digital Center Dschang",
-          excerpt: "Plus de 200 participants au hackathon CTF organisé en partenariat avec l'Orange Digital Center de Dschang. Une compétition intense pour résoudre des défis de cybersécurité.",
+          excerpt: "Plus de 200 participants au hackathon CTF organisé par West Tech en partenariat avec l'Orange Digital Center de Dschang. Une compétition intense pour résoudre des défis de cybersécurité et révéler les talents tech de la région.",
           category: "Hackathon",
           date: "5 Septembre 2024",
           author: "Dilane Goune",
-          image: bootcamp,
+          image: teamDilane,
           featured: false
         },
         {
           id: "investor-pitch-day",
           title: "Investor Pitch Day : Connectez votre startup aux investisseurs",
-          excerpt: "Le prochain Investor Pitch Day aura lieu au West Tech Incubator à Bafoussam. Une opportunité unique pour présenter votre projet à des investisseurs et obtenir du financement.",
+          excerpt: "Le prochain Investor Pitch Day aura lieu au West Tech Incubator à Bafoussam. Plus de 100 participants attendus. Une opportunité unique pour présenter votre projet à des investisseurs et obtenir du financement pour votre startup.",
           category: "Funding",
           date: "20 Septembre 2024",
           author: "Sandra Motue",
-          image: successStory,
+          image: teamPatrick,
           featured: false
         },
         {
           id: "partenariat-universite-dschang",
           title: "Partenariat avec l'Université de Dschang : Former les entrepreneurs de demain",
-          excerpt: "West Tech renforce son partenariat avec l'Université de Dschang pour des programmes de formation, stages et initiatives d'entrepreneuriat étudiant dans la région Ouest.",
+          excerpt: "West Tech renforce son partenariat stratégique avec l'Université de Dschang. Au programme : formations en entrepreneuriat, stages en startup, mentorat et initiatives pour accompagner les étudiants vers l'innovation.",
           category: "Partenariat",
           date: "10 Mai 2024",
           author: "West Tech Team",
-          image: report2023,
+          image: westtechWorkspace,
           featured: false
         }
       ]
@@ -99,61 +99,61 @@ const BlogPage = () => {
         {
           id: "west-all-tech-festival-2025",
           title: "West All Tech Festival 2025: The Biggest Tech Event in Western Cameroon",
-          excerpt: "Join us on July 27, 2025 at West Digital Hub in Bafoussam for the West All Tech Festival! Over 150 participants expected to celebrate tech innovation in the West Region.",
+          excerpt: "Join us on July 27, 2025 at West Digital Hub in Bafoussam for the West All Tech Festival! Over 150 participants expected to celebrate tech innovation in the West Region. Networking, conferences, hackathons and more!",
           category: "Event",
           date: "July 27, 2025",
           author: "West Tech Team",
-          image: westHubLaunch,
+          image: westtechWorkspace,
           featured: true
         },
         {
           id: "inauguration-west-digital-hub",
           title: "West Digital Hub Inauguration: A New Digital Era for the West",
-          excerpt: "West Digital Hub officially opens its doors in Bafoussam. First tech hub with 24/7 Starlink WiFi, coworking, private offices and support programs for entrepreneurs.",
+          excerpt: "West Digital Hub officially opens its doors in Bafoussam. The region's first tech hub with 24/7 Starlink WiFi, modern coworking spaces, private offices and support programs for local entrepreneurs.",
           category: "Announcement",
           date: "June 15, 2025",
           author: "Therence Ngniguepa",
-          image: digitalTransformation,
+          image: heroCoworking,
           featured: false
         },
         {
           id: "innovator-talks-blockchain",
           title: "Innovator Talks: Blockchain & Opportunities in Africa with Duclair Fopa Kuete",
-          excerpt: "Every Friday from 4-6pm, join our Innovator Talks sessions. This month: Duclair Fopa Kuete, CEO of TalantaChain, on 'Blockchain & Opportunities in Africa'.",
+          excerpt: "Every Friday from 4-6pm, join our Innovator Talks sessions at West Digital Hub. This month: Duclair Fopa Kuete, CEO of TalantaChain, shares his expertise on 'Blockchain & Opportunities in Africa'.",
           category: "Talk",
           date: "June 20, 2025",
           author: "Patrick Manfouo",
-          image: techTrends,
+          image: blockchainTalk,
           featured: false
         },
         {
           id: "capture-the-flag-hackathon",
           title: "Capture The Flag Hackathon at Orange Digital Center Dschang",
-          excerpt: "Over 200 participants at the CTF hackathon organized in partnership with Orange Digital Center in Dschang. An intense competition to solve cybersecurity challenges.",
+          excerpt: "Over 200 participants at the CTF hackathon organized by West Tech in partnership with Orange Digital Center in Dschang. An intense competition to solve cybersecurity challenges and discover regional tech talent.",
           category: "Hackathon",
           date: "September 5, 2024",
           author: "Dilane Goune",
-          image: bootcamp,
+          image: teamDilane,
           featured: false
         },
         {
           id: "investor-pitch-day",
           title: "Investor Pitch Day: Connect Your Startup to Investors",
-          excerpt: "The next Investor Pitch Day will take place at West Tech Incubator in Bafoussam. A unique opportunity to present your project to investors and secure funding.",
+          excerpt: "The next Investor Pitch Day will take place at West Tech Incubator in Bafoussam. Over 100 participants expected. A unique opportunity to present your project to investors and secure funding for your startup.",
           category: "Funding",
           date: "September 20, 2024",
           author: "Sandra Motue",
-          image: successStory,
+          image: teamPatrick,
           featured: false
         },
         {
           id: "partenariat-universite-dschang",
           title: "Partnership with University of Dschang: Training Tomorrow's Entrepreneurs",
-          excerpt: "West Tech strengthens its partnership with University of Dschang for training programs, internships and student entrepreneurship initiatives in the West Region.",
+          excerpt: "West Tech strengthens its strategic partnership with University of Dschang. Programs include entrepreneurship training, startup internships, mentorship and initiatives to guide students toward innovation.",
           category: "Partnership",
           date: "May 10, 2024",
           author: "West Tech Team",
-          image: report2023,
+          image: westtechWorkspace,
           featured: false
         }
       ]
