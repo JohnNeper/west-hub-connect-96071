@@ -12,15 +12,15 @@ interface AboutProps {
 const About = ({ lang }: AboutProps) => {
   const content = {
     fr: {
-      title: "Un écosystème complet pour l'innovation",
-      mission: "West Digital Hub est l'infrastructure physique dédiée à l'accélération de l'écosystème tech de l'Ouest Cameroun. Situé à Bafoussam, nous offrons un environnement professionnel moderne avec WiFi Starlink et électricité garantis 24/7.",
-      vision: "Nous proposons le West Digital Hub Space (coworking), des bureaux privés équipés, des salles de réunion ultra-modernes, et des programmes (podcasts, hackathons, bootcamps). Nous accompagnons aussi les PME dans leur digitalisation et stratégie business.",
+      title: "L'écosystème tech de l'Ouest Cameroun",
+      mission: "Fondé en 2021, West Digital Hub est le centre d'innovation et hub technologique situé à Bafoussam, Région de l'Ouest Cameroun. Notre mission est de combler le fossé numérique et créer des opportunités pour les talents de l'Ouest Cameroun.",
+      vision: "Nous offrons un espace coworking 24/7 avec WiFi Starlink, des bureaux privés, des salles de réunion modernes, et des programmes comme les Innovator Talks, hackathons, bootcamps et le West All Tech Festival. Nous accompagnons les startups et PME vers le succès.",
       cta: "En savoir plus"
     },
     en: {
-      title: "A Complete Innovation Ecosystem",
-      mission: "West Digital Hub is the physical infrastructure dedicated to accelerating the West Cameroon tech ecosystem. Located in Bafoussam, we offer a modern professional environment with Starlink WiFi and guaranteed 24/7 electricity.",
-      vision: "We offer West Digital Hub Space (coworking), equipped private offices, ultra-modern meeting rooms, and programs (podcasts, hackathons, bootcamps). We also support SMEs in their digitalization and business strategy.",
+      title: "West Cameroon Tech Ecosystem",
+      mission: "Founded in 2021, West Digital Hub is the innovation center and technology hub located in Bafoussam, West Region of Cameroon. Our mission is to bridge the digital divide and create opportunities for talented individuals in Western Cameroon.",
+      vision: "We offer a 24/7 coworking space with Starlink WiFi, private offices, modern meeting rooms, and programs like Innovator Talks, hackathons, bootcamps and the West All Tech Festival. We support startups and SMEs towards success.",
       cta: "Learn more"
     }
   };

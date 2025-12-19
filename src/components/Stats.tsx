@@ -12,27 +12,27 @@ const Stats = ({ lang }: StatsProps) => {
       stats: [
         {
           icon: Users,
-          number: "500+",
-          label: "Membres actifs",
-          description: "Une communauté dynamique de professionnels"
+          number: "1000+",
+          label: "Membres de la communauté",
+          description: "Entrepreneurs, développeurs et innovateurs"
         },
         {
           icon: Building2,
-          number: "50+",
-          label: "Startups accompagnées",
-          description: "De l'idée au succès"
+          number: "5+",
+          label: "Startups lancées",
+          description: "Accompagnées de l'idée au marché"
         },
         {
           icon: TrendingUp,
-          number: "2M FCFA+",
-          label: "Levés de fonds",
-          description: "Par nos startups incubées"
+          number: "500+",
+          label: "Entrepreneurs formés",
+          description: "Bootcamps, workshops et formations"
         },
         {
           icon: Briefcase,
-          number: "100+",
-          label: "Événements par an",
-          description: "Bootcamps, meetups, talks & podcasts"
+          number: "12+",
+          label: "Partenaires",
+          description: "Université de Dschang, Orange, MTN..."
         }
       ]
     },
@@ -42,27 +42,27 @@ const Stats = ({ lang }: StatsProps) => {
       stats: [
         {
           icon: Users,
-          number: "500+",
-          label: "Active Members",
-          description: "A dynamic community of professionals"
+          number: "1000+",
+          label: "Community Members",
+          description: "Entrepreneurs, developers and innovators"
         },
         {
           icon: Building2,
-          number: "50+",
-          label: "Startups Supported",
-          description: "From idea to success"
+          number: "5+",
+          label: "Startups Launched",
+          description: "Supported from idea to market"
         },
         {
           icon: TrendingUp,
-          number: "2M+ FCFA",
-          label: "Funds Raised",
-          description: "By our incubated startups"
+          number: "500+",
+          label: "Entrepreneurs Trained",
+          description: "Bootcamps, workshops and trainings"
         },
         {
           icon: Briefcase,
-          number: "100+",
-          label: "Events per year",
-          description: "Bootcamps, meetups, talks & podcasts"
+          number: "12+",
+          label: "Partners",
+          description: "University of Dschang, Orange, MTN..."
         }
       ]
     }
