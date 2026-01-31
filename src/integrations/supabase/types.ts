@@ -14,16 +14,135 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_articles: {
+        Row: {
+          author: string
+          category_en: string
+          category_fr: string
+          content_en: string
+          content_fr: string
+          created_at: string
+          excerpt_en: string
+          excerpt_fr: string
+          featured: boolean | null
+          id: string
+          image_url: string | null
+          published: boolean | null
+          published_at: string | null
+          title_en: string
+          title_fr: string
+          updated_at: string
+        }
+        Insert: {
+          author: string
+          category_en: string
+          category_fr: string
+          content_en: string
+          content_fr: string
+          created_at?: string
+          excerpt_en: string
+          excerpt_fr: string
+          featured?: boolean | null
+          id?: string
+          image_url?: string | null
+          published?: boolean | null
+          published_at?: string | null
+          title_en: string
+          title_fr: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          category_en?: string
+          category_fr?: string
+          content_en?: string
+          content_fr?: string
+          created_at?: string
+          excerpt_en?: string
+          excerpt_fr?: string
+          featured?: boolean | null
+          id?: string
+          image_url?: string | null
+          published?: boolean | null
+          published_at?: string | null
+          title_en?: string
+          title_fr?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      upee_registrations: {
+        Row: {
+          created_at: string
+          domain: string
+          email: string
+          field_of_study: string
+          full_name: string
+          id: string
+          motivation: string | null
+          phone: string
+          status: string | null
+          university: string
+        }
+        Insert: {
+          created_at?: string
+          domain: string
+          email: string
+          field_of_study: string
+          full_name: string
+          id?: string
+          motivation?: string | null
+          phone: string
+          status?: string | null
+          university: string
+        }
+        Update: {
+          created_at?: string
+          domain?: string
+          email?: string
+          field_of_study?: string
+          full_name?: string
+          id?: string
+          motivation?: string | null
+          phone?: string
+          status?: string | null
+          university?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +269,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const

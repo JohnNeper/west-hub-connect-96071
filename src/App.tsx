@@ -11,6 +11,9 @@ import BlogArticlePage from "./pages/BlogArticlePage";
 import TeamPage from "./pages/TeamPage";
 import CoworkingPage from "./pages/CoworkingPage";
 import ContactPage from "./pages/ContactPage";
+import UpeePage from "./pages/UpeePage";
+import AdminLoginPage from "./pages/AdminLoginPage";
+import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +33,9 @@ const App = () => (
           <Route path="/blog/:id" element={<BlogArticlePage />} />
           <Route path="/team" element={<TeamPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/upee" element={<UpeePage />} />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
