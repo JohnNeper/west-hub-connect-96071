@@ -35,6 +35,9 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import partnerDimeltech from "@/assets/partner-dimeltech.png";
+import partnerKamlewa from "@/assets/partner-kamlewa.jpg";
+import partnerAic from "@/assets/partner-aic.png";
 
 const UpeePage = () => {
   const [lang, setLang] = useState<'fr' | 'en'>('fr');
@@ -527,19 +530,30 @@ const UpeePage = () => {
             </p>
           </div>
           
-          {/* Partner logos placeholder */}
+      {/* Partner logos */}
           <div className="max-w-4xl mx-auto mb-12">
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-4 animate-fade-in">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in">
+              {[
+                { name: "Dimel Tech", logo: partnerDimeltech, desc: "Solutions digitales innovantes" },
+                { name: "Kamlewa Technologie", logo: partnerKamlewa, desc: "Cybersécurité & Développement" },
+                { name: "Intelligence Artificielle Cameroun", logo: partnerAic, desc: "IA & Data Science" }
+              ].map((partner, index) => (
                 <div 
-                  key={i}
-                  className="aspect-square rounded-xl bg-muted/50 border-2 border-dashed border-border flex items-center justify-center"
+                  key={index}
+                  className="group bg-background rounded-2xl border border-border/50 p-6 hover:border-primary/50 hover:shadow-lg transition-all duration-300"
                 >
-                  <Building2 className="h-8 w-8 text-muted-foreground/30" />
+                  <div className="aspect-video rounded-xl bg-muted/30 flex items-center justify-center mb-4 overflow-hidden p-4">
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.name}
+                      className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h4 className="font-bold text-foreground text-center">{partner.name}</h4>
+                  <p className="text-sm text-muted-foreground text-center mt-1">{partner.desc}</p>
                 </div>
               ))}
             </div>
-            <p className="text-center text-muted-foreground text-sm mt-4 italic">{t.partnersEmpty}</p>
           </div>
           
           {/* Become Partner CTA */}
