@@ -31,7 +31,21 @@ import {
   FileText,
   Award,
   TrendingUp,
-  Heart
+  Heart,
+  Target,
+  Zap,
+  Globe2,
+  BadgeCheck,
+  Trophy,
+  Lightbulb,
+  MapPin,
+  Quote,
+  BookOpen,
+  Coins,
+  Gift,
+  Sparkles,
+  UserCheck,
+  CircleDollarSign
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -66,6 +80,17 @@ const UpeePage = () => {
       heroDescription: "Tu es étudiant(e) et tu veux te démarquer ? UPEE te permet d'acquérir une vraie expérience professionnelle pendant tes études, pour que ton CV brille dès la fin de ta formation.",
       ctaJoin: "Je veux rejoindre UPEE",
       ctaWhatsApp: "Poser une question",
+      ctaSponsor: "Devenir Sponsor",
+      
+      // Impact Stats
+      impactTitle: "Notre Impact en Chiffres",
+      impactSubtitle: "Un programme qui transforme réellement les parcours étudiants",
+      stats: [
+        { value: "50+", label: "Étudiants Formés", icon: GraduationCap },
+        { value: "12", label: "Entreprises Partenaires", icon: Building2 },
+        { value: "85%", label: "Taux d'Insertion", icon: TrendingUp },
+        { value: "6", label: "Domaines Tech", icon: Lightbulb }
+      ],
       
       whatIsTitle: "C'est quoi le Programme UPEE ?",
       whatIsDescription: "UPEE (Un Pied à l'École, Un Pied en Entreprise) est un programme d'alternance innovant créé par West Digital Hub. Le principe est simple :",
@@ -75,6 +100,40 @@ const UpeePage = () => {
         "Tu es encadré(e) par des professionnels expérimentés",
         "Tu construis ton portfolio et ton réseau professionnel"
       ],
+      
+      // Students in Business Section
+      studentsTitle: "Nos Étudiants en Entreprise",
+      studentsSubtitle: "Découvre les parcours inspirants de nos étudiants actuellement en mission",
+      students: [
+        {
+          name: "Kevine Nguepi",
+          university: "Université de Dschang",
+          field: "Informatique L3",
+          company: "Dimel Tech",
+          role: "Développeuse Web Junior",
+          quote: "UPEE m'a permis de passer de la théorie à la pratique. Aujourd'hui, je travaille sur de vrais projets clients !",
+          duration: "6 mois"
+        },
+        {
+          name: "Joel Teguia",
+          university: "IUT Fotso Victor",
+          field: "Génie Informatique",
+          company: "Kamlewa Technologie",
+          role: "Assistant Cybersécurité",
+          quote: "Grâce au programme, j'ai découvert ma passion pour la cybersécurité et acquis des certifications.",
+          duration: "4 mois"
+        },
+        {
+          name: "Larissa Momo",
+          university: "Université de Dschang",
+          field: "Mathématiques-Info M1",
+          company: "AIC",
+          role: "Stagiaire Data Analyst",
+          quote: "L'IA n'était qu'un concept théorique pour moi. Maintenant, je crée des modèles de prédiction réels.",
+          duration: "5 mois"
+        }
+      ],
+      studentsMoreText: "Et bien d'autres étudiants qui construisent leur avenir chaque jour...",
       
       whyTitle: "Pourquoi rejoindre UPEE ?",
       whySubtitle: "Parce que le diplôme seul ne suffit plus. Voici ce que tu gagnes :",
@@ -131,11 +190,72 @@ const UpeePage = () => {
         { step: "4", title: "Tu évolues", desc: "Mentorat, formations, et montée en compétences continue" }
       ],
       
+      // Sponsor Section
+      sponsorTitle: "Soutenez la Jeunesse Tech Camerounaise",
+      sponsorSubtitle: "En devenant sponsor UPEE, vous investissez dans l'avenir du numérique africain",
+      sponsorDescription: "Le programme UPEE forme les talents tech de demain. Votre soutien nous aide à offrir des opportunités uniques aux étudiants de la région de l'Ouest Cameroun.",
+      sponsorBenefits: [
+        {
+          icon: Globe2,
+          title: "Visibilité Régionale",
+          desc: "Votre marque associée à l'innovation et à l'éducation tech de l'Ouest"
+        },
+        {
+          icon: UserCheck,
+          title: "Accès aux Talents",
+          desc: "Recrutez en priorité les meilleurs profils formés par notre programme"
+        },
+        {
+          icon: Heart,
+          title: "Impact Social",
+          desc: "Contribuez à réduire le chômage des jeunes diplômés au Cameroun"
+        },
+        {
+          icon: Trophy,
+          title: "Responsabilité Sociale",
+          desc: "Renforcez votre image RSE auprès de votre communauté"
+        }
+      ],
+      sponsorTiers: [
+        { name: "Bronze", amount: "200 000 FCFA", features: ["Logo sur le site", "Mention sur les réseaux sociaux", "Rapport d'impact annuel"] },
+        { name: "Argent", amount: "500 000 FCFA", features: ["Avantages Bronze +", "Présence aux événements", "2 étudiants dédiés à vos projets"] },
+        { name: "Or", amount: "1 000 000 FCFA", features: ["Avantages Argent +", "Naming d'une cohorte", "5 étudiants dédiés", "Partenariat exclusif"] }
+      ],
+      sponsorCta: "Devenir Sponsor",
+      sponsorContact: "Contactez-nous pour discuter de votre partenariat",
+      
       partnersTitle: "Nos Entreprises Partenaires",
       partnersSubtitle: "Ces entreprises accueillent nos étudiants et les forment :",
       partnersEmpty: "Espace réservé aux entreprises partenaires",
       becomePartner: "Devenir Entreprise Partenaire",
       becomePartnerDesc: "Vous êtes une entreprise tech ? Rejoignez notre réseau de partenaires et accédez à des talents formés et motivés.",
+      
+      // Testimonials
+      testimonialsTitle: "Ce Qu'ils Disent du Programme",
+      testimonialsSubtitle: "Témoignages de nos étudiants et partenaires",
+      testimonials: [
+        {
+          type: "student",
+          name: "Blaise Tchakounte",
+          role: "Ancien étudiant UPEE, maintenant Développeur chez MTN",
+          quote: "UPEE a été le tremplin de ma carrière. 6 mois après le programme, j'ai été recruté grâce aux compétences et au réseau acquis.",
+          avatar: "BT"
+        },
+        {
+          type: "company",
+          name: "M. Fotso Jean",
+          role: "CEO, Dimel Tech",
+          quote: "Les étudiants UPEE arrivent avec une vraie capacité d'adaptation. Nous avons déjà intégré 3 anciens participants à notre équipe.",
+          avatar: "FJ"
+        },
+        {
+          type: "student",
+          name: "Sandrine Kengne",
+          role: "Étudiante en Cybersécurité",
+          quote: "J'ai appris plus en 4 mois de programme que durant toute ma formation théorique. C'est concret et stimulant !",
+          avatar: "SK"
+        }
+      ],
       
       faqTitle: "Questions Fréquentes",
       faq: [
@@ -191,6 +311,17 @@ const UpeePage = () => {
       heroDescription: "Are you a student who wants to stand out? UPEE lets you gain real professional experience during your studies, so your CV shines from day one.",
       ctaJoin: "I want to join UPEE",
       ctaWhatsApp: "Ask a question",
+      ctaSponsor: "Become a Sponsor",
+      
+      // Impact Stats
+      impactTitle: "Our Impact in Numbers",
+      impactSubtitle: "A program that truly transforms student careers",
+      stats: [
+        { value: "50+", label: "Students Trained", icon: GraduationCap },
+        { value: "12", label: "Partner Companies", icon: Building2 },
+        { value: "85%", label: "Employment Rate", icon: TrendingUp },
+        { value: "6", label: "Tech Domains", icon: Lightbulb }
+      ],
       
       whatIsTitle: "What is the UPEE Program?",
       whatIsDescription: "UPEE (Un Pied à l'École, Un Pied en Entreprise) is an innovative work-study program created by West Digital Hub. The concept is simple:",
@@ -200,6 +331,40 @@ const UpeePage = () => {
         "You're mentored by experienced professionals",
         "You build your portfolio and professional network"
       ],
+      
+      // Students in Business Section
+      studentsTitle: "Our Students in Business",
+      studentsSubtitle: "Discover the inspiring journeys of our students currently on assignment",
+      students: [
+        {
+          name: "Kevine Nguepi",
+          university: "University of Dschang",
+          field: "Computer Science L3",
+          company: "Dimel Tech",
+          role: "Junior Web Developer",
+          quote: "UPEE allowed me to go from theory to practice. Today, I work on real client projects!",
+          duration: "6 months"
+        },
+        {
+          name: "Joel Teguia",
+          university: "IUT Fotso Victor",
+          field: "Computer Engineering",
+          company: "Kamlewa Technologie",
+          role: "Cybersecurity Assistant",
+          quote: "Thanks to the program, I discovered my passion for cybersecurity and obtained certifications.",
+          duration: "4 months"
+        },
+        {
+          name: "Larissa Momo",
+          university: "University of Dschang",
+          field: "Mathematics-CS M1",
+          company: "AIC",
+          role: "Data Analyst Intern",
+          quote: "AI was just a theoretical concept for me. Now, I create real prediction models.",
+          duration: "5 months"
+        }
+      ],
+      studentsMoreText: "And many more students building their future every day...",
       
       whyTitle: "Why join UPEE?",
       whySubtitle: "Because a diploma alone is no longer enough. Here's what you gain:",
@@ -256,11 +421,72 @@ const UpeePage = () => {
         { step: "4", title: "You grow", desc: "Mentoring, training, and continuous skill development" }
       ],
       
+      // Sponsor Section
+      sponsorTitle: "Support Cameroonian Tech Youth",
+      sponsorSubtitle: "By becoming a UPEE sponsor, you invest in the future of African digital",
+      sponsorDescription: "The UPEE program trains tomorrow's tech talents. Your support helps us provide unique opportunities to students in West Cameroon.",
+      sponsorBenefits: [
+        {
+          icon: Globe2,
+          title: "Regional Visibility",
+          desc: "Your brand associated with innovation and tech education in the West"
+        },
+        {
+          icon: UserCheck,
+          title: "Talent Access",
+          desc: "Priority recruitment of the best profiles trained by our program"
+        },
+        {
+          icon: Heart,
+          title: "Social Impact",
+          desc: "Help reduce youth unemployment among graduates in Cameroon"
+        },
+        {
+          icon: Trophy,
+          title: "Social Responsibility",
+          desc: "Strengthen your CSR image with your community"
+        }
+      ],
+      sponsorTiers: [
+        { name: "Bronze", amount: "200,000 FCFA", features: ["Logo on website", "Social media mention", "Annual impact report"] },
+        { name: "Silver", amount: "500,000 FCFA", features: ["Bronze benefits +", "Event presence", "2 students dedicated to your projects"] },
+        { name: "Gold", amount: "1,000,000 FCFA", features: ["Silver benefits +", "Cohort naming", "5 dedicated students", "Exclusive partnership"] }
+      ],
+      sponsorCta: "Become a Sponsor",
+      sponsorContact: "Contact us to discuss your partnership",
+      
       partnersTitle: "Our Partner Companies",
       partnersSubtitle: "These companies welcome our students and train them:",
       partnersEmpty: "Space reserved for partner companies",
       becomePartner: "Become a Partner Company",
       becomePartnerDesc: "Are you a tech company? Join our partner network and access trained, motivated talent.",
+      
+      // Testimonials
+      testimonialsTitle: "What They Say About the Program",
+      testimonialsSubtitle: "Testimonials from our students and partners",
+      testimonials: [
+        {
+          type: "student",
+          name: "Blaise Tchakounte",
+          role: "Former UPEE student, now Developer at MTN",
+          quote: "UPEE was the springboard for my career. 6 months after the program, I was hired thanks to the skills and network I gained.",
+          avatar: "BT"
+        },
+        {
+          type: "company",
+          name: "Mr. Fotso Jean",
+          role: "CEO, Dimel Tech",
+          quote: "UPEE students come with real adaptability. We have already integrated 3 former participants into our team.",
+          avatar: "FJ"
+        },
+        {
+          type: "student",
+          name: "Sandrine Kengne",
+          role: "Cybersecurity Student",
+          quote: "I learned more in 4 months of the program than during my entire theoretical training. It's concrete and stimulating!",
+          avatar: "SK"
+        }
+      ],
       
       faqTitle: "Frequently Asked Questions",
       faq: [
@@ -387,12 +613,51 @@ const UpeePage = () => {
               >
                 {t.ctaJoin} <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                onClick={() => document.getElementById('sponsor')?.scrollIntoView({ behavior: 'smooth' })}
+                className="rounded-full px-8 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              >
+                <CircleDollarSign className="mr-2 h-5 w-5" /> {t.ctaSponsor}
+              </Button>
               <a href="https://wa.me/237657977372" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="lg" className="rounded-full px-8 text-lg">
+                <Button variant="ghost" size="lg" className="rounded-full px-8 text-lg">
                   <Phone className="mr-2 h-5 w-5" /> {t.ctaWhatsApp}
                 </Button>
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Stats Section */}
+      <section className="py-16 bg-gradient-to-r from-primary via-primary/90 to-accent relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2">
+              {t.impactTitle}
+            </h2>
+            <p className="text-primary-foreground/80">{t.impactSubtitle}</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {t.stats.map((stat, index) => (
+              <div 
+                key={index}
+                className="text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 animate-slide-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <stat.icon className="h-8 w-8 mx-auto mb-3 text-primary-foreground" />
+                <div className="text-4xl md:text-5xl font-bold text-primary-foreground mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-primary-foreground/80 font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -425,6 +690,83 @@ const UpeePage = () => {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Students in Business Section */}
+      <section className="py-20 bg-gradient-to-br from-accent/5 via-background to-primary/5">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 rounded-full mb-4">
+              <Sparkles className="h-5 w-5 text-accent" />
+              <span className="text-sm font-semibold text-accent">Success Stories</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              {t.studentsTitle}
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              {t.studentsSubtitle}
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+            {t.students.map((student, index) => (
+              <Card 
+                key={index}
+                className="overflow-hidden border-2 border-transparent hover:border-accent/30 transition-all duration-300 animate-slide-up group"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                {/* Header */}
+                <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-xl">
+                      {student.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-foreground text-lg">{student.name}</h3>
+                      <p className="text-sm text-muted-foreground">{student.field}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <MapPin className="h-4 w-4" />
+                    <span>{student.university}</span>
+                  </div>
+                </div>
+                
+                {/* Company info */}
+                <div className="p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Building2 className="h-5 w-5 text-primary" />
+                      <span className="font-semibold text-foreground">{student.company}</span>
+                    </div>
+                    <span className="text-xs bg-accent/20 text-accent px-2 py-1 rounded-full font-medium">
+                      {student.duration}
+                    </span>
+                  </div>
+                  
+                  <div className="flex items-center gap-2 text-sm">
+                    <Briefcase className="h-4 w-4 text-muted-foreground" />
+                    <span className="text-muted-foreground">{student.role}</span>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-border/50">
+                    <Quote className="h-5 w-5 text-accent/50 mb-2" />
+                    <p className="text-sm text-muted-foreground italic leading-relaxed">
+                      "{student.quote}"
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+          
+          <p className="text-center text-muted-foreground animate-fade-in">
+            <span className="inline-flex items-center gap-2">
+              <Users className="h-5 w-5" />
+              {t.studentsMoreText}
+            </span>
+          </p>
         </div>
       </section>
 
@@ -518,6 +860,150 @@ const UpeePage = () => {
         </div>
       </section>
 
+      {/* Sponsor Section */}
+      <section id="sponsor" className="py-20 bg-gradient-to-br from-primary/10 via-background to-accent/10 relative overflow-hidden">
+        <div className="absolute top-10 right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 rounded-full mb-4">
+              <Heart className="h-5 w-5 text-primary" />
+              <span className="text-sm font-semibold text-primary">Sponsorship</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              {t.sponsorTitle}
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-2">
+              {t.sponsorSubtitle}
+            </p>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              {t.sponsorDescription}
+            </p>
+          </div>
+          
+          {/* Sponsor Benefits */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16">
+            {t.sponsorBenefits.map((benefit, index) => (
+              <Card 
+                key={index}
+                className="p-6 text-center hover:shadow-lg transition-all border-2 border-transparent hover:border-primary/30 animate-slide-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                  <benefit.icon className="h-7 w-7 text-primary" />
+                </div>
+                <h3 className="font-bold text-foreground mb-2">{benefit.title}</h3>
+                <p className="text-sm text-muted-foreground">{benefit.desc}</p>
+              </Card>
+            ))}
+          </div>
+          
+          {/* Sponsor Tiers */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+            {t.sponsorTiers.map((tier, index) => (
+              <Card 
+                key={index}
+                className={`p-8 text-center transition-all animate-slide-up ${
+                  index === 2 
+                    ? 'border-2 border-accent shadow-glow scale-105' 
+                    : 'border border-border hover:border-primary/30'
+                }`}
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                {index === 2 && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="bg-accent text-accent-foreground text-xs font-bold px-3 py-1 rounded-full">
+                      {lang === 'fr' ? 'Populaire' : 'Popular'}
+                    </span>
+                  </div>
+                )}
+                <div className={`text-2xl font-bold mb-2 ${
+                  index === 0 ? 'text-amber-600' : index === 1 ? 'text-slate-500' : 'text-yellow-500'
+                }`}>
+                  {tier.name}
+                </div>
+                <div className="text-3xl font-bold text-foreground mb-6">{tier.amount}</div>
+                <ul className="space-y-3 text-left mb-6">
+                  {tier.features.map((feature, fIndex) => (
+                    <li key={fIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="mailto:contact@westtechs.org">
+                  <Button 
+                    className={`w-full rounded-full ${
+                      index === 2 
+                        ? 'bg-accent text-accent-foreground hover:bg-accent/90' 
+                        : 'bg-primary text-primary-foreground hover:bg-primary/90'
+                    }`}
+                  >
+                    {t.sponsorCta}
+                  </Button>
+                </a>
+              </Card>
+            ))}
+          </div>
+          
+          <p className="text-center text-muted-foreground animate-fade-in">
+            {t.sponsorContact}: <a href="mailto:contact@westtechs.org" className="text-primary hover:underline font-semibold">contact@westtechs.org</a>
+          </p>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-muted/50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              {t.testimonialsTitle}
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              {t.testimonialsSubtitle}
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {t.testimonials.map((testimonial, index) => (
+              <Card 
+                key={index}
+                className="p-8 hover:shadow-lg transition-all border-2 border-transparent hover:border-accent/30 animate-slide-up"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <Quote className="h-8 w-8 text-accent/30 mb-4" />
+                <p className="text-muted-foreground mb-6 leading-relaxed italic">
+                  "{testimonial.quote}"
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold ${
+                    testimonial.type === 'student' 
+                      ? 'bg-gradient-to-br from-accent to-accent/80' 
+                      : 'bg-gradient-to-br from-primary to-primary/80'
+                  }`}>
+                    {testimonial.avatar}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground">{testimonial.name}</h4>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <span className={`text-xs px-2 py-1 rounded-full ${
+                    testimonial.type === 'student' 
+                      ? 'bg-accent/20 text-accent' 
+                      : 'bg-primary/20 text-primary'
+                  }`}>
+                    {testimonial.type === 'student' ? (lang === 'fr' ? 'Étudiant' : 'Student') : (lang === 'fr' ? 'Entreprise' : 'Company')}
+                  </span>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Partners Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-6">
@@ -530,13 +1016,13 @@ const UpeePage = () => {
             </p>
           </div>
           
-      {/* Partner logos */}
+          {/* Partner logos */}
           <div className="max-w-4xl mx-auto mb-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in">
               {[
-                { name: "Dimel Tech", logo: partnerDimeltech, desc: "Solutions digitales innovantes" },
-                { name: "Kamlewa Technologie", logo: partnerKamlewa, desc: "Cybersécurité & Développement" },
-                { name: "Intelligence Artificielle Cameroun", logo: partnerAic, desc: "IA & Data Science" }
+                { name: "Dimel Tech", logo: partnerDimeltech, desc: lang === 'fr' ? "Solutions digitales innovantes" : "Innovative digital solutions" },
+                { name: "Kamlewa Technologie", logo: partnerKamlewa, desc: lang === 'fr' ? "Cybersécurité & Développement" : "Cybersecurity & Development" },
+                { name: "Intelligence Artificielle Cameroun", logo: partnerAic, desc: lang === 'fr' ? "IA & Data Science" : "AI & Data Science" }
               ].map((partner, index) => (
                 <div 
                   key={index}
