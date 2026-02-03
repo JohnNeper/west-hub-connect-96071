@@ -1,4 +1,4 @@
-import { Lightbulb, Building2, Users, Video, Coffee, ArrowRight } from "lucide-react";
+import { Lightbulb, Building2, Users, Video, Coffee, ArrowRight, Sparkles, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import privateOfficeImg from "@/assets/private-office.jpg";
@@ -21,7 +21,8 @@ const Services = ({ lang }: ServicesProps) => {
           title: "West Digital Hub Space (Coworking)",
           description: "Espace de coworking 24/7 avec WiFi Starlink haut débit, électricité permanente. Rejoignez une communauté dynamique d'innovateurs et entrepreneurs.",
           image: coworkingImg,
-          features: ["Accès 24/7", "WiFi Starlink", "Café gratuit", "Communauté"]
+          features: ["Accès 24/7", "WiFi Starlink", "Café gratuit", "Communauté"],
+          highlight: true
         },
         {
           icon: Building2,
@@ -52,7 +53,8 @@ const Services = ({ lang }: ServicesProps) => {
           features: ["Hackathons", "Bootcamps", "Workshops", "Podcast"]
         }
       ],
-      cta: "Réserver maintenant"
+      cta: "Réserver maintenant",
+      ctaQuote: "Demander un devis"
     },
     en: {
       title: "Our Services",
@@ -63,7 +65,8 @@ const Services = ({ lang }: ServicesProps) => {
           title: "West Digital Hub Space (Coworking)",
           description: "24/7 coworking space with high-speed Starlink WiFi, permanent electricity. Join a dynamic community of innovators and entrepreneurs.",
           image: coworkingImg,
-          features: ["24/7 Access", "Starlink WiFi", "Free Coffee", "Community"]
+          features: ["24/7 Access", "Starlink WiFi", "Free Coffee", "Community"],
+          highlight: true
         },
         {
           icon: Building2,
@@ -94,24 +97,28 @@ const Services = ({ lang }: ServicesProps) => {
           features: ["Hackathons", "Bootcamps", "Workshops", "Podcast"]
         }
       ],
-      cta: "Book Now"
+      cta: "Book Now",
+      ctaQuote: "Request Quote"
     }
   };
 
   const t = content[lang];
 
   return (
-    <section id="services" className="py-32 bg-background relative overflow-hidden">
+    <section id="services" className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
-          <span className="inline-block px-6 py-2 bg-primary/10 text-primary rounded-full font-semibold text-sm mb-6">
-            {lang === 'fr' ? 'NOS SERVICES' : 'OUR SERVICES'}
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text">
+        <div className="text-center mb-16 md:mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 rounded-full mb-6">
+            <Sparkles className="h-5 w-5 text-accent" />
+            <span className="text-sm font-bold text-accent uppercase tracking-wide">
+              {lang === 'fr' ? 'NOS SERVICES' : 'OUR SERVICES'}
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
             {t.title}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -119,47 +126,69 @@ const Services = ({ lang }: ServicesProps) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {t.services.map((service, index) => (
             <Card
               key={index}
-              className="group relative overflow-hidden rounded-2xl lg:rounded-3xl border-border hover:border-primary/50 transition-all duration-500 hover:shadow-glow"
+              className={`group relative overflow-hidden rounded-2xl lg:rounded-3xl transition-all duration-500 hover:shadow-glow border-2 ${
+                service.highlight 
+                  ? 'border-accent/50 bg-gradient-to-br from-accent/5 to-background' 
+                  : 'border-border hover:border-accent/30'
+              }`}
             >
               {service.image ? (
-                <div className="flex flex-col md:flex-row lg:flex-col">
-                  <div className="relative h-48 md:h-64 lg:h-72 overflow-hidden md:w-1/2 lg:w-full">
+                <div className="flex flex-col">
+                  {/* Image Section */}
+                  <div className="relative h-56 md:h-64 overflow-hidden">
                     <img 
                       src={service.image} 
                       alt={service.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r lg:bg-gradient-to-b from-black/60 via-black/30 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                     
-                    <div className="absolute top-4 left-4 lg:top-6 lg:left-6">
-                      <div className="bg-white/20 backdrop-blur-sm p-2 lg:p-3 rounded-xl">
-                        <service.icon className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                    {/* Icon Badge */}
+                    <div className="absolute top-4 left-4">
+                      <div className="bg-accent/90 backdrop-blur-sm p-3 rounded-xl shadow-lg">
+                        <service.icon className="h-6 w-6 text-accent-foreground" />
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="p-6 lg:p-8 md:w-1/2 lg:w-full flex flex-col">
-                    <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 lg:mb-4">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm lg:text-base text-muted-foreground mb-4 lg:mb-6 leading-relaxed flex-grow">
-                      {service.description}
-                    </p>
-                    {service.features && (
-                      <div className="flex flex-wrap gap-2 mb-4 lg:mb-6">
-                        {service.features.map((feature: string, idx: number) => (
-                          <span key={idx} className="px-3 py-1 bg-primary/5 text-primary rounded-full text-xs font-medium">
-                            {feature}
-                          </span>
-                        ))}
+
+                    {/* Highlight Badge */}
+                    {service.highlight && (
+                      <div className="absolute top-4 right-4">
+                        <span className="px-3 py-1 bg-accent text-accent-foreground text-xs font-bold rounded-full">
+                          {lang === 'fr' ? 'POPULAIRE' : 'POPULAR'}
+                        </span>
                       </div>
                     )}
+                  </div>
+                  
+                  {/* Content Section */}
+                  <div className="p-6 lg:p-8 flex flex-col flex-grow">
+                    <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-5 leading-relaxed flex-grow">
+                      {service.description}
+                    </p>
+                    
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {service.features.map((feature: string, idx: number) => (
+                        <span 
+                          key={idx} 
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent/10 text-accent rounded-full text-xs font-semibold"
+                        >
+                          <CheckCircle className="h-3 w-3" />
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                    
                     <Button 
-                      className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-full w-full sm:w-auto"
+                      className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-full w-full"
                       onClick={() => {
                         const bookingSection = document.getElementById('booking');
                         if (bookingSection) {
@@ -172,37 +201,40 @@ const Services = ({ lang }: ServicesProps) => {
                   </div>
                 </div>
               ) : (
-                <div className="p-6 lg:p-10">
-                  <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-4 lg:p-5 rounded-2xl w-fit mb-4 lg:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <service.icon className="h-8 w-8 lg:h-10 lg:w-10 text-primary" />
+                // No image variant
+                <div className="p-6 lg:p-10 h-full flex flex-col">
+                  <div className="bg-gradient-to-br from-accent/20 to-primary/10 p-4 lg:p-5 rounded-2xl w-fit mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <service.icon className="h-8 w-8 lg:h-10 lg:w-10 text-accent" />
                   </div>
                   
-                  <h3 className="text-xl lg:text-2xl font-bold mb-3 lg:mb-4 text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="text-xl lg:text-2xl font-bold mb-3 text-foreground group-hover:text-accent transition-colors">
                     {service.title}
                   </h3>
                   
-                  <p className="text-sm lg:text-base text-muted-foreground mb-4 lg:mb-6 leading-relaxed">
+                  <p className="text-muted-foreground mb-5 leading-relaxed flex-grow">
                     {service.description}
                   </p>
 
-                  {service.features && (
-                    <div className="flex flex-wrap gap-2 mb-6 lg:mb-8">
-                      {service.features.map((feature: string, idx: number) => (
-                        <span key={idx} className="px-3 py-1 bg-primary/5 text-primary rounded-full text-xs font-medium">
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {service.features.map((feature: string, idx: number) => (
+                      <span 
+                        key={idx} 
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent/10 text-accent rounded-full text-xs font-semibold"
+                      >
+                        <CheckCircle className="h-3 w-3" />
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
                   
                   <Button 
                     variant="outline" 
-                    className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 rounded-full w-full sm:w-auto"
+                    className="border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 rounded-full w-full"
                     onClick={() => {
                       window.location.href = '/contact';
                     }}
                   >
-                    {lang === 'fr' ? 'Demander un devis' : 'Request Quote'} <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    {t.ctaQuote} <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
               )}
