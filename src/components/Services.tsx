@@ -1,10 +1,6 @@
-import { Lightbulb, Building2, Users, Video, Coffee, ArrowRight, Sparkles, CheckCircle } from "lucide-react";
+import { Code2, Smartphone, Brain, Shield, Link2, Building2, GraduationCap, Trophy, Users, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import privateOfficeImg from "@/assets/private-office.jpg";
-import coworkingImg from "@/assets/hero-coworking.jpg";
-import meetingRoomImg from "@/assets/meeting-room.jpg";
-import cafeSpaceImg from "@/assets/cafe-space.jpg";
 
 interface ServicesProps {
   lang: 'fr' | 'en';
@@ -13,233 +9,213 @@ interface ServicesProps {
 const Services = ({ lang }: ServicesProps) => {
   const content = {
     fr: {
-      title: "Nos Services",
-      subtitle: "Des solutions adaptées pour transformer votre vision en réalité",
-      services: [
+      badge: "NOS SERVICES",
+      title: "Business & Tech Services",
+      subtitle: "Solutions technologiques pour marchés internationaux",
+      ecosystemTitle: "Ecosystem & Community",
+      ecosystemSubtitle: "L'infrastructure qui forme et connecte les talents",
+      cta: "Demander un devis",
+      ctaEco: "En savoir plus",
+      techServices: [
         {
-          icon: Users,
-          title: "West Digital Hub Space (Coworking)",
-          description: "Espace de coworking 24/7 avec WiFi Starlink haut débit, électricité permanente. Rejoignez une communauté dynamique d'innovateurs et entrepreneurs.",
-          image: coworkingImg,
-          features: ["Accès 24/7", "WiFi Starlink", "Café gratuit", "Communauté"],
-          highlight: true
+          icon: Code2,
+          title: "Offshore Development",
+          description: "Équipes dédiées pour le développement logiciel offshore. Web, mobile, desktop — des produits livrés selon les standards internationaux.",
+          features: ["React / Next.js", "Node / Python", "DevOps & CI/CD", "Code Review"],
         },
+        {
+          icon: Smartphone,
+          title: "Product Development",
+          description: "De l'idée au produit fini. Design UX/UI, développement, tests et déploiement. Web, Mobile (iOS/Android), Desktop.",
+          features: ["MVP & Prototypage", "UI/UX Design", "Apps Natives", "SaaS"],
+        },
+        {
+          icon: Brain,
+          title: "AI & Data Solutions",
+          description: "Intelligence artificielle, machine learning, analyse de données et automatisation pour optimiser vos processus business.",
+          features: ["Machine Learning", "NLP & Chatbots", "Data Analytics", "Automatisation"],
+        },
+        {
+          icon: Shield,
+          title: "Cybersecurity & Risk",
+          description: "Audit de sécurité, tests de pénétration, conformité RGPD et stratégie de protection des données pour votre entreprise.",
+          features: ["Audit Sécurité", "Pentest", "RGPD / ISO 27001", "SOC"],
+        },
+        {
+          icon: Link2,
+          title: "Blockchain & Web3",
+          description: "Smart contracts, DApps, tokenisation et solutions blockchain pour la fintech, la supply chain et l'identité numérique.",
+          features: ["Smart Contracts", "DApps", "Tokenisation", "DeFi"],
+        },
+      ],
+      ecosystemServices: [
         {
           icon: Building2,
-          title: "Bureaux Privés Équipés",
-          description: "Bureaux privés entièrement équipés pour équipes et entreprises. Contrats flexibles mensuels, environnement professionnel premium.",
-          image: privateOfficeImg,
-          features: ["Bureaux meublés", "Contrats flexibles", "Services admin", "Sécurité 24/7"]
+          title: "Coworking & Bureaux",
+          description: "Espace 24/7 avec WiFi Starlink, bureaux privés équipés, salles de réunion ultra-modernes.",
+          features: ["WiFi 24/7", "Bureaux privés", "Salles de réunion", "Café gratuit"],
         },
         {
-          icon: Video,
-          title: "Salles de Réunion Ultra-Modernes",
-          description: "Salles de conférence équipées avec projecteur HD, visioconférence et connexion haut débit. Parfait pour formations et réunions.",
-          image: meetingRoomImg,
-          features: ["Équipement pro", "Visioconférence", "Capacité 20-50", "Réservation flexible"]
+          icon: GraduationCap,
+          title: "Formations & Bootcamps",
+          description: "Programmes intensifs en développement, IA, cybersécurité. Formation pratique orientée emploi.",
+          features: ["Dev Bootcamp", "IA & Data", "Cybersécurité", "Certifications"],
         },
         {
-          icon: Lightbulb,
-          title: "Accompagnement Digitalisation & Business",
-          description: "Services complets de transformation digitale : audit digital, stratégie business, refonte site web, e-commerce et marketing digital.",
-          image: null,
-          features: ["Audit digital", "Stratégie business", "Site web", "Marketing"]
+          icon: Trophy,
+          title: "Hackathons & Événements",
+          description: "Compétitions tech, Innovator Talks, West Innovation Podcast et West All Tech Festival.",
+          features: ["Hackathons", "Workshops", "Podcast", "Festival"],
         },
         {
-          icon: Coffee,
-          title: "Programmes & Événements Tech",
-          description: "Hackathons, workshops, bootcamps intensifs et podcasts West Innovation pour booster l'écosystème tech de Bafoussam.",
-          image: cafeSpaceImg,
-          features: ["Hackathons", "Bootcamps", "Workshops", "Podcast"]
-        }
+          icon: Users,
+          title: "Programme UPEE",
+          description: "Un Pied à l'École, Un Pied en Entreprise — alternance pour intégrer les jeunes dans le monde professionnel.",
+          features: ["Alternance", "Mentoring", "5 étudiants", "3 entreprises"],
+          link: "/upee",
+        },
       ],
-      cta: "Réserver maintenant",
-      ctaQuote: "Demander un devis"
     },
     en: {
-      title: "Our Services",
-      subtitle: "Tailored solutions to transform your vision into reality",
-      services: [
+      badge: "OUR SERVICES",
+      title: "Business & Tech Services",
+      subtitle: "Technology solutions for international markets",
+      ecosystemTitle: "Ecosystem & Community",
+      ecosystemSubtitle: "The infrastructure that trains and connects talent",
+      cta: "Request a Quote",
+      ctaEco: "Learn More",
+      techServices: [
         {
-          icon: Users,
-          title: "West Digital Hub Space (Coworking)",
-          description: "24/7 coworking space with high-speed Starlink WiFi, permanent electricity. Join a dynamic community of innovators and entrepreneurs.",
-          image: coworkingImg,
-          features: ["24/7 Access", "Starlink WiFi", "Free Coffee", "Community"],
-          highlight: true
+          icon: Code2,
+          title: "Offshore Development",
+          description: "Dedicated teams for offshore software development. Web, mobile, desktop — products delivered to international standards.",
+          features: ["React / Next.js", "Node / Python", "DevOps & CI/CD", "Code Review"],
         },
+        {
+          icon: Smartphone,
+          title: "Product Development",
+          description: "From idea to finished product. UX/UI design, development, testing and deployment. Web, Mobile (iOS/Android), Desktop.",
+          features: ["MVP & Prototyping", "UI/UX Design", "Native Apps", "SaaS"],
+        },
+        {
+          icon: Brain,
+          title: "AI & Data Solutions",
+          description: "Artificial intelligence, machine learning, data analysis and automation to optimize your business processes.",
+          features: ["Machine Learning", "NLP & Chatbots", "Data Analytics", "Automation"],
+        },
+        {
+          icon: Shield,
+          title: "Cybersecurity & Risk",
+          description: "Security audits, penetration testing, GDPR compliance and data protection strategy for your business.",
+          features: ["Security Audit", "Pentest", "GDPR / ISO 27001", "SOC"],
+        },
+        {
+          icon: Link2,
+          title: "Blockchain & Web3",
+          description: "Smart contracts, DApps, tokenization and blockchain solutions for fintech, supply chain and digital identity.",
+          features: ["Smart Contracts", "DApps", "Tokenization", "DeFi"],
+        },
+      ],
+      ecosystemServices: [
         {
           icon: Building2,
-          title: "Equipped Private Offices",
-          description: "Fully equipped private offices for teams and companies. Flexible monthly contracts, premium professional environment.",
-          image: privateOfficeImg,
-          features: ["Furnished offices", "Flexible contracts", "Admin services", "24/7 Security"]
+          title: "Coworking & Offices",
+          description: "24/7 space with Starlink WiFi, equipped private offices, ultra-modern meeting rooms.",
+          features: ["24/7 WiFi", "Private offices", "Meeting rooms", "Free coffee"],
         },
         {
-          icon: Video,
-          title: "Ultra-Modern Meeting Rooms",
-          description: "Conference rooms equipped with HD projector, video conferencing and high-speed connection. Perfect for training and meetings.",
-          image: meetingRoomImg,
-          features: ["Pro equipment", "Video conferencing", "Capacity 20-50", "Flexible booking"]
+          icon: GraduationCap,
+          title: "Training & Bootcamps",
+          description: "Intensive programs in development, AI, cybersecurity. Practical job-oriented training.",
+          features: ["Dev Bootcamp", "AI & Data", "Cybersecurity", "Certifications"],
         },
         {
-          icon: Lightbulb,
-          title: "Digitalization & Business Support",
-          description: "Complete digital transformation services: digital audit, business strategy, website redesign, e-commerce and digital marketing.",
-          image: null,
-          features: ["Digital audit", "Business strategy", "Website", "Marketing"]
+          icon: Trophy,
+          title: "Hackathons & Events",
+          description: "Tech competitions, Innovator Talks, West Innovation Podcast and West All Tech Festival.",
+          features: ["Hackathons", "Workshops", "Podcast", "Festival"],
         },
         {
-          icon: Coffee,
-          title: "Tech Programs & Events",
-          description: "Hackathons, workshops, intensive bootcamps and West Innovation podcasts to boost Bafoussam's tech ecosystem.",
-          image: cafeSpaceImg,
-          features: ["Hackathons", "Bootcamps", "Workshops", "Podcast"]
-        }
+          icon: Users,
+          title: "UPEE Program",
+          description: "School-to-Employment — alternance program to integrate youth into the professional world.",
+          features: ["Alternance", "Mentoring", "5 students", "3 companies"],
+          link: "/upee",
+        },
       ],
-      cta: "Book Now",
-      ctaQuote: "Request Quote"
     }
   };
 
   const t = content[lang];
 
+  const ServiceCard = ({ service, variant }: { service: any; variant: 'tech' | 'eco' }) => (
+    <Card className="group p-6 lg:p-8 rounded-2xl border border-border hover:border-accent/30 hover:shadow-card transition-all duration-300 h-full flex flex-col">
+      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${variant === 'tech' ? 'bg-foreground' : 'bg-accent/10'} group-hover:scale-110 transition-transform`}>
+        <service.icon className={`h-6 w-6 ${variant === 'tech' ? 'text-background' : 'text-accent'}`} />
+      </div>
+      <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">{service.title}</h3>
+      <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-grow">{service.description}</p>
+      <div className="flex flex-wrap gap-2 mb-5">
+        {service.features.map((f: string, i: number) => (
+          <span key={i} className="inline-flex items-center gap-1 px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground">
+            <CheckCircle className="h-3 w-3 text-accent" />
+            {f}
+          </span>
+        ))}
+      </div>
+      <Button
+        variant={variant === 'tech' ? 'default' : 'outline'}
+        className={`w-full rounded-full font-semibold ${variant === 'tech' ? 'bg-foreground text-background hover:bg-foreground/90' : 'border-accent text-accent hover:bg-accent hover:text-accent-foreground'}`}
+        onClick={() => {
+          if (service.link) {
+            window.location.href = service.link;
+          } else {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+      >
+        {service.link ? t.ctaEco : t.cta} <ArrowRight className="ml-2 h-4 w-4" />
+      </Button>
+    </Card>
+  );
+
   return (
     <section id="services" className="py-24 md:py-32 bg-background relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 rounded-full mb-6">
-            <Sparkles className="h-5 w-5 text-accent" />
-            <span className="text-sm font-bold text-accent uppercase tracking-wide">
-              {lang === 'fr' ? 'NOS SERVICES' : 'OUR SERVICES'}
+        {/* Business & Tech Services */}
+        <div className="mb-24">
+          <div className="text-center mb-16">
+            <span className="inline-block px-5 py-2 bg-foreground text-background rounded-full font-bold text-xs tracking-widest mb-6">
+              {t.badge}
             </span>
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">{t.title}</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t.subtitle}</p>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-            {t.title}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            {t.subtitle}
-          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {t.techServices.map((service, i) => (
+              <ServiceCard key={i} service={service} variant="tech" />
+            ))}
+          </div>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-          {t.services.map((service, index) => (
-            <Card
-              key={index}
-              className={`group relative overflow-hidden rounded-2xl lg:rounded-3xl transition-all duration-500 hover:shadow-glow border-2 ${
-                service.highlight 
-                  ? 'border-accent/50 bg-gradient-to-br from-accent/5 to-background' 
-                  : 'border-border hover:border-accent/30'
-              }`}
-            >
-              {service.image ? (
-                <div className="flex flex-col">
-                  {/* Image Section */}
-                  <div className="relative h-56 md:h-64 overflow-hidden">
-                    <img 
-                      src={service.image} 
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                    
-                    {/* Icon Badge */}
-                    <div className="absolute top-4 left-4">
-                      <div className="bg-accent/90 backdrop-blur-sm p-3 rounded-xl shadow-lg">
-                        <service.icon className="h-6 w-6 text-accent-foreground" />
-                      </div>
-                    </div>
+        {/* Ecosystem & Community */}
+        <div id="ecosystem">
+          <div className="text-center mb-16">
+            <span className="inline-block px-5 py-2 bg-accent/10 text-accent rounded-full font-bold text-xs tracking-widest mb-6">
+              ECOSYSTEM
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">{t.ecosystemTitle}</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t.ecosystemSubtitle}</p>
+          </div>
 
-                    {/* Highlight Badge */}
-                    {service.highlight && (
-                      <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 bg-accent text-accent-foreground text-xs font-bold rounded-full">
-                          {lang === 'fr' ? 'POPULAIRE' : 'POPULAR'}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  
-                  {/* Content Section */}
-                  <div className="p-6 lg:p-8 flex flex-col flex-grow">
-                    <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-5 leading-relaxed flex-grow">
-                      {service.description}
-                    </p>
-                    
-                    {/* Features */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {service.features.map((feature: string, idx: number) => (
-                        <span 
-                          key={idx} 
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent/10 text-accent rounded-full text-xs font-semibold"
-                        >
-                          <CheckCircle className="h-3 w-3" />
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    <Button 
-                      className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-full w-full"
-                      onClick={() => {
-                        const bookingSection = document.getElementById('booking');
-                        if (bookingSection) {
-                          bookingSection.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
-                    >
-                      {t.cta} <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                // No image variant
-                <div className="p-6 lg:p-10 h-full flex flex-col">
-                  <div className="bg-gradient-to-br from-accent/20 to-primary/10 p-4 lg:p-5 rounded-2xl w-fit mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <service.icon className="h-8 w-8 lg:h-10 lg:w-10 text-accent" />
-                  </div>
-                  
-                  <h3 className="text-xl lg:text-2xl font-bold mb-3 text-foreground group-hover:text-accent transition-colors">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground mb-5 leading-relaxed flex-grow">
-                    {service.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {service.features.map((feature: string, idx: number) => (
-                      <span 
-                        key={idx} 
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent/10 text-accent rounded-full text-xs font-semibold"
-                      >
-                        <CheckCircle className="h-3 w-3" />
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <Button 
-                    variant="outline" 
-                    className="border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 rounded-full w-full"
-                    onClick={() => {
-                      window.location.href = '/contact';
-                    }}
-                  >
-                    {t.ctaQuote} <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </div>
-              )}
-            </Card>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {t.ecosystemServices.map((service, i) => (
+              <ServiceCard key={i} service={service} variant="eco" />
+            ))}
+          </div>
         </div>
       </div>
     </section>

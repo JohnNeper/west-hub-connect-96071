@@ -5,8 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Mail, Phone, MapPin, Users, Calendar, Loader2 } from "lucide-react";
-import JoinCommunityDialog from "./JoinCommunityDialog";
+import { Mail, Phone, MapPin, Loader2, Linkedin, MessageCircle, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface ContactProps {
@@ -24,48 +23,32 @@ const Contact = ({ lang }: ContactProps) => {
 
   const content = {
     fr: {
-      title: "Contactez-Nous",
-      subtitle: "Nous sommes à votre écoute",
+      badge: "CONTACTEZ-NOUS",
+      title: "Work With Us",
+      subtitle: "Parlez-nous de votre projet. Notre équipe vous répondra sous 24h.",
       name: "Nom complet",
       email: "Email",
       subject: "Sujet",
       message: "Message",
-      messagePlaceholder: "Votre message...",
-      submit: "Envoyer",
+      messagePlaceholder: "Décrivez votre projet ou besoin...",
+      submit: "Envoyer le message",
       success: "Message envoyé!",
       successDesc: "Nous vous répondrons dans les plus brefs délais.",
-      location: "Localisation",
-      locationText: "Bafoussam, Région de l'Ouest, Cameroun",
-      contactEmail: "Email",
-      contactPhone: "Téléphone",
-      joinCommunity: "Rejoignez la Communauté",
-      joinCommunityDesc: "Faites partie de l'écosystème West Hub",
-      bookSpace: "Réservez un Espace",
-      bookSpaceDesc: "Trouvez l'espace parfait pour votre activité",
-      joinBtn: "Nous Rejoindre",
-      bookBtn: "Réserver Maintenant"
+      or: "Ou contactez-nous directement",
     },
     en: {
-      title: "Contact Us",
-      subtitle: "We're here to help",
+      badge: "CONTACT US",
+      title: "Work With Us",
+      subtitle: "Tell us about your project. Our team will respond within 24h.",
       name: "Full Name",
       email: "Email",
       subject: "Subject",
       message: "Message",
-      messagePlaceholder: "Your message...",
-      submit: "Send",
+      messagePlaceholder: "Describe your project or need...",
+      submit: "Send Message",
       success: "Message sent!",
       successDesc: "We'll get back to you as soon as possible.",
-      location: "Location",
-      locationText: "Bafoussam, West Region, Cameroon",
-      contactEmail: "Email",
-      contactPhone: "Phone",
-      joinCommunity: "Join the Community",
-      joinCommunityDesc: "Be part of the West Hub ecosystem",
-      bookSpace: "Book a Space",
-      bookSpaceDesc: "Find the perfect space for your activity",
-      joinBtn: "Join Us",
-      bookBtn: "Book Now"
+      or: "Or contact us directly",
     }
   };
 
@@ -74,204 +57,104 @@ const Contact = ({ lang }: ContactProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
     try {
       const { error } = await supabase.functions.invoke('send-contact', {
         body: { ...formData, lang }
       });
-
       if (error) throw error;
-
-      toast.success(t.success, {
-        description: t.successDesc
-      });
-      
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: ""
-      });
+      toast.success(t.success, { description: t.successDesc });
+      setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       console.error("Contact error:", error);
       toast.error(lang === 'fr' ? "Erreur" : "Error", {
-        description: lang === 'fr' 
-          ? "Une erreur est survenue. Veuillez réessayer." 
-          : "An error occurred. Please try again."
+        description: lang === 'fr' ? "Une erreur est survenue." : "An error occurred."
       });
     } finally {
       setIsLoading(false);
     }
   };
 
+  const directContacts = [
+    { icon: Mail, label: "contact@westtechs.org", href: "mailto:contact@westtechs.org" },
+    { icon: Phone, label: "+237 658 315 610", href: "tel:+237658315610" },
+    { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/237658315610" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/westdigitalhub" },
+    { icon: MapPin, label: "Bafoussam, Cameroun", href: "#" },
+  ];
+
   return (
-    <section id="contact" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            {t.title}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {t.subtitle}
-          </p>
+    <section id="contact" className="py-24 md:py-32 bg-foreground text-background relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
+        backgroundSize: '60px 60px'
+      }} />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
+          <span className="inline-block px-5 py-2 bg-accent/20 text-accent rounded-full font-bold text-xs tracking-widest mb-6">
+            {t.badge}
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black mb-4">{t.title}</h2>
+          <p className="text-lg text-background/50 max-w-2xl mx-auto">{t.subtitle}</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="space-y-8 animate-slide-up">
-            <Card className="p-6 shadow-card">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MapPin className="h-6 w-6 text-primary-foreground" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">{t.location}</h3>
-                  <p className="text-muted-foreground">{t.locationText}</p>
-                </div>
+        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          {/* Form */}
+          <Card className="p-8 rounded-2xl bg-background text-foreground border-0">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="space-y-2">
+                <Label htmlFor="contact-name">{t.name}</Label>
+                <Input id="contact-name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required />
               </div>
-            </Card>
-
-            <Card className="p-6 shadow-card">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Mail className="h-6 w-6 text-secondary-foreground" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">{t.contactEmail}</h3>
-                  <a href="mailto:contact@westhub.cm" className="text-muted-foreground hover:text-primary transition-colors">
-                    contact@westhub.cm
-                  </a>
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="contact-email">{t.email}</Label>
+                <Input id="contact-email" type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required />
               </div>
-            </Card>
-
-            <Card className="p-6 shadow-card">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Phone className="h-6 w-6 text-accent-foreground" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">{t.contactPhone}</h3>
-                  <a href="tel:+237658315610" className="text-muted-foreground hover:text-primary transition-colors">
-                    +237 658 315 610
-                  </a>
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="contact-subject">{t.subject}</Label>
+                <Input id="contact-subject" value={formData.subject} onChange={(e) => setFormData({ ...formData, subject: e.target.value })} required />
               </div>
-            </Card>
+              <div className="space-y-2">
+                <Label htmlFor="contact-message">{t.message}</Label>
+                <Textarea id="contact-message" rows={5} placeholder={t.messagePlaceholder} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required />
+              </div>
+              <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold rounded-full" disabled={isLoading}>
+                {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />{lang === 'fr' ? 'Envoi...' : 'Sending...'}</> : <>{t.submit} <ArrowRight className="ml-2 h-4 w-4" /></>}
+              </Button>
+            </form>
+          </Card>
 
-            {/* Google Maps */}
-            <Card className="overflow-hidden shadow-card">
+          {/* Direct contacts */}
+          <div className="flex flex-col justify-center space-y-6">
+            <h3 className="text-xl font-bold text-background/70 mb-2">{t.or}</h3>
+            {directContacts.map((c, i) => (
+              <a
+                key={i}
+                href={c.href}
+                target={c.href.startsWith('http') ? '_blank' : undefined}
+                rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="flex items-center gap-4 p-4 rounded-xl border border-background/10 bg-background/5 hover:bg-background/10 transition-all group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
+                  <c.icon className="h-5 w-5 text-accent" />
+                </div>
+                <span className="font-medium text-background/80 group-hover:text-accent transition-colors">{c.label}</span>
+              </a>
+            ))}
+
+            {/* Map */}
+            <div className="rounded-xl overflow-hidden border border-background/10 mt-4">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127172.08245845685!2d10.352485!3d5.478394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x105f31ea3a50b823%3A0x8e4faa8cd2c8b0e5!2sBafoussam%2C%20Cameroon!5e0!3m2!1sen!2s!4v1234567890"
                 width="100%"
-                height="300"
+                height="200"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="w-full"
               />
-            </Card>
-
-            {/* CTA Cards */}
-            <div className="grid md:grid-cols-2 gap-4">
-              <Card className="p-6 shadow-card hover:shadow-glow transition-all duration-300 group">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Users className="h-6 w-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">{t.joinCommunity}</h3>
-                    <p className="text-sm text-muted-foreground">{t.joinCommunityDesc}</p>
-                  </div>
-                </div>
-                <JoinCommunityDialog lang={lang}>
-                  <Button className="w-full" variant="outline">
-                    {t.joinBtn}
-                  </Button>
-                </JoinCommunityDialog>
-              </Card>
-
-              <Card className="p-6 shadow-card hover:shadow-glow transition-all duration-300 group">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Calendar className="h-6 w-6 text-secondary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">{t.bookSpace}</h3>
-                    <p className="text-sm text-muted-foreground">{t.bookSpaceDesc}</p>
-                  </div>
-                </div>
-                <a href="#booking">
-                  <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                    {t.bookBtn}
-                  </Button>
-                </a>
-              </Card>
             </div>
           </div>
-
-          <Card className="p-8 shadow-card animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="contact-name">{t.name}</Label>
-                <Input
-                  id="contact-name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="contact-email">{t.email}</Label>
-                <Input
-                  id="contact-email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="contact-subject">{t.subject}</Label>
-                <Input
-                  id="contact-subject"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="contact-message">{t.message}</Label>
-                <Textarea
-                  id="contact-message"
-                  rows={6}
-                  placeholder={t.messagePlaceholder}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
-                />
-              </div>
-
-              <Button 
-                type="submit" 
-                size="lg"
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    {lang === 'fr' ? 'Envoi...' : 'Sending...'}
-                  </>
-                ) : (
-                  t.submit
-                )}
-              </Button>
-            </form>
-          </Card>
         </div>
       </div>
     </section>
